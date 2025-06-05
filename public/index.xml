@@ -6,7 +6,21 @@
     <description>Recent content on keplertech.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate></lastBuildDate>
+    <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/linkedin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/linkedin/</guid>
+      <description>&lt;style&gt;&#xA;.linkedin-container {&#xA;    display: flex;&#xA;    justify-content: center !important; /* Centers images horizontally */&#xA;    align-items: center !important; /* Aligns them vertically */&#xA;    place-items: center !important; &#xA;    place-self: center !important; &#xA;    gap: 100px; /* Adds space between images */&#xA;    width: 100%; /* Ensures full width */&#xA;    margin: 0 !important;  /* Ensures images are centered */&#xA;    text-align: center !important; /* Helps center items */&#xA;}&#xA;.linkedin-container img {&#xA;    width: 220px; /* Adjust size as needed */&#xA;    height: auto;&#xA;    display: block;&#xA;    margin: 0 ; /* Ensures images are centered */&#xA;    align: center;&#xA;    border-radius: 50%; /* Makes the image circular */&#xA;}&#xA;.page-title {&#xA;    font-size: 48px; /* Adjust size as needed */&#xA;    font-weight: bold;&#xA;    text-align: center; /* Centers the text */&#xA;    color: black;&#xA;    margin-top: 20px;&#xA;}&#xA;&lt;/style&gt;&#xA;&lt;h1 class=&#34;page-title&#34;&gt;OUR TEAM&lt;/h1&gt;&#xA;&lt;div class=&#34;linkedin-container&#34; style=&#34;width: 100%; margin: 0; align-items: center place-items: center align-self: center justify-content: center;&#34;&gt;&#xA;    &lt;a href=&#34;https://www.linkedin.com/in/christophe-alexandre-634bb36/&#34; target=&#34;_blank&#34;&gt;&#xA;        &lt;img src=&#34;http://localhost:1313/images/Christophe.jpeg#center&#34; alt=&#34;LinkedIn Profile 1&#34;&gt;&#xA;    &lt;/a&gt;&#xA;    &lt;a href=&#34;https://www.linkedin.com/in/noam-cohen-b57abb83/&#34; target=&#34;_blank&#34;&gt;&#xA;        &lt;img src=&#34;http://localhost:1313/images/Noam.jpeg#center&#34; alt=&#34;LinkedIn Profile 2&#34;&gt;&#xA;    &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div style=&#34;width: 100%; margin: 0 auto; text-align: left;&#34;&gt;&#xA;&lt;p&gt;With R&amp;amp;D experience in academia, startups and the industry leaders, the keplertech.io team is coming to bring the EDA industry to the new era of chip design.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Blog</title>
+      <link>http://localhost:1313/blog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/</guid>
+      <description>&lt;style&gt;&#xA;.page-title {&#xA;    font-size: 48px; /* Adjust size as needed */&#xA;    font-weight: bold;&#xA;    text-align: center; /* Centers the text */&#xA;    color: black;&#xA;    margin-top: 20px;&#xA;}&#xA;&lt;/style&gt;&#xA;&lt;h1 class=&#34;page-title&#34;&gt;OUR BLOG&lt;/h1&gt;&#xA;&lt;div style=&#34;width: 100%; margin: 0 auto; text-align: left;&#34;&gt;&#xA;&lt;p&gt;&amp;ndash; Come to see our talks in FSIC 2025! &amp;mdash;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Past talks&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;NLnet Foundation Podcast: &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/4l6_gtQCLOE?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;&#xA;    &lt;/div&gt;&#xA;&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

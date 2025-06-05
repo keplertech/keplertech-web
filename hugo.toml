@@ -2,3 +2,5 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'keplertech.io'
 theme = 'ananke'
+[markup.goldmark.renderer]
+unsafe = true
