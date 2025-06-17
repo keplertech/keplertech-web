@@ -15,7 +15,7 @@ By integrating open-source collaboration, we remove barriers to innovation, empo
   
 As a driving force in semiconductor evolution, keplertech.io is redefining how EDA adapts to the demands of a new era—faster, smarter, and more connected.
   
-The keplertech.io team is building tailored EDA backend tooling for development, optimization and testing.  
+Following these standards, the keplertech.io team is building tailored EDA backend tooling for development, optimization and testing.  
   
 Want to know more? please contact us:  
   
