@@ -12,7 +12,7 @@ draft = false
 }
 </style>
 <h1 class="page-title">OUR BLOG</h1>
-<div style="width: 100%; margin: 0 auto; text-align: left;">
+<div style="width: 100%; margin: 0 auto; text-align: left; font-family: 'Comfortaa', sans-serif;">
 
 -- Come to see our talks in FSIC 2025! ---
 
