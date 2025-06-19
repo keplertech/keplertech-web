@@ -12,11 +12,14 @@ draft = false
 }
 </style>
 <h1 class="page-title">OUR BLOG</h1>
-<div style="width: 100%; margin: 0 auto; text-align: left; font-family: 'Comfortaa', sans-serif;">
 
--- Come to see our talks in FSIC 2025! ---
-
-**Past talks**
+<a href="https://wiki.f-si.org/index.php?title=FSiC2025"
+   target="_blank"
+   rel="noopener noreferrer"
+   style="display: block; width: fit-content; margin: 0 auto; text-align: center; font-family: Arial, sans-serif; font-weight: bold;">
+  -- Come to see our talks in FSIC 2025! --
+</a>
+<div style="width: 100%; margin: 0 auto; text-align: left; font-family: 'Ariel', sans-serif;">
 
 NLnet Foundation Podcast: {{< youtube 4l6_gtQCLOE >}}
 

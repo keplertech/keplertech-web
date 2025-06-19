@@ -4,7 +4,7 @@ date = "2025-06-04T13:28:44+02:00"
 draft = false
 +++
 
-<div style="width: 100%; margin: 0 auto; text-align: left;">
+<div style="width: 100%; margin: 0 auto; text-align: left; font-family: 'Ariel', sans-serif;">
 At keplertech.io, we are pioneering the next generation of Electronic Design Automation (EDA) technologies to accelerate semiconductor innovation.  
   
 Our advanced automation tools streamline chip design, optimization, and verification, significantly reducing time-to-market for cutting-edge semiconductor solutions.

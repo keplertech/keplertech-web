@@ -36,7 +36,7 @@
     </a>
 </div>
 
-<div style="width: 100%; margin: 0 auto; text-align: left; font-family: 'Comfortaa', sans-serif;">
+<div style="width: 100%; margin: 0 auto; text-align: left; font-family: 'Ariel', sans-serif;">
   
 With R&D experience in academia, startups and the industry leaders, the keplertech.io team is coming to bring the EDA industry to the new era of chip design.
 </div>
