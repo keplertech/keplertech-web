@@ -1,6 +1,7 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://keplertech.io'
 languageCode = 'en-us'
 title = 'keplertech.io'
 theme = 'ananke'
+googleAnalytics = 'G-KZ8ND1EF9X'
 [markup.goldmark.renderer]
 unsafe = true
