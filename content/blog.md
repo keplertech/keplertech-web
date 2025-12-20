@@ -21,6 +21,10 @@ draft = false
 </a> -->
 <div style="width: 100%; margin: 0 auto; text-align: left; font-family: 'Ariel', sans-serif;">
 
+D&R IP SoC EU 25:
+
+{{< youtube CshlDJYVKeo >}}
+
 SEMICON Europa 2025:
 
 {{< youtube wVR_9h41d0A >}}
