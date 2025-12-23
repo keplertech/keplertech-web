@@ -99,5 +99,5 @@ draft = false
   </p>
 
 
-  <p class="intro">To know more please contact us: <a href="mailto:contact@keplertech.io" style="color:inherit;">contact@keplertech.io</a></p>
+  <p class="intro">To know more, please contact us: <a href="mailto:contact@keplertech.io" style="color:inherit;">contact@keplertech.io</a></p>
 </div>
