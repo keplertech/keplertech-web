@@ -18,8 +18,8 @@ draft = false
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
-  max-width: 100%;
-  margin: 12px 0;
+  width=560; 
+  height=315;
 }
 .video-wrap iframe {
   position: absolute;
