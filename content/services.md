@@ -64,7 +64,7 @@ draft = false
 
 /* Small responsive tweak */
 @media (min-width:1200px){
-  .page-title { font-size: 56px; }
+  .page-title { font-size: 48px; }
   .segment-title { font-size: 34px; }
   .segment-body { font-size: 18px; }
   .contact { font-size: 18px; }

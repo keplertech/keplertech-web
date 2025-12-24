@@ -20,7 +20,7 @@
 }
 /* Page title */
 .page-title {
-  font-size: 56px;
+  font-size: 48px;
   font-weight: bold;
   text-align: center;
   color: black;
