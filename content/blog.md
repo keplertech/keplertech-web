@@ -41,7 +41,14 @@ draft = false
   font-family: Arial, sans-serif;
   padding: 18px 12px;
 }
-.section-title { font-size: 27; font-weight:300; margin-top:18px; }
+.section-title { 
+  font-size: 28;      /* larger than body text */
+  font-weight: 500;
+  margin: 18px 0 8px 0;
+  color: #000;
+  font-family: Arial;
+}
+
 </style>
 
 <h1 class="page-title">OUR BLOG</h1>
