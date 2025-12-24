@@ -4,13 +4,16 @@ draft = false
 +++
 
 <style>
+/* Page title */
 .page-title {
-  font-size: 48px;
+  font-size: 56px;
   font-weight: bold;
   text-align: center;
   color: black;
   margin-top: 20px;
+  font-family: 'Comfortaa', system-ui, Arial, sans-serif; /* apply Comfortaa to main title */
 }
+
 
 /* Responsive video wrapper */
 .video-wrap {

@@ -18,13 +18,16 @@
     align: center;
     border-radius: 50%; /* Makes the image circular */
 }
+/* Page title */
 .page-title {
-    font-size: 48px; /* Adjust size as needed */
-    font-weight: bold;
-    text-align: center; /* Centers the text */
-    color: black;
-    margin-top: 20px;
+  font-size: 56px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  margin-top: 20px;
+  font-family: 'Comfortaa', system-ui, Arial, sans-serif; /* apply Comfortaa to main title */
 }
+
 </style>
 <h1 class="page-title">OUR TEAM</h1>
 <div class="linkedin-container" style="width: 100%; margin: 0; align-items: center place-items: center align-self: center justify-content: center;">
