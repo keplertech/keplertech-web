@@ -1,6 +1,19 @@
+# Static site: no build step. Netlify serves the "site" folder as-is.
 [build]
-  publish = "public"
-  command = "git submodule update --init --recursive && hugo"
+  publish = "site"
 
-[context.production.environment]
-  HUGO_VERSION = "0.147.2"
+# Old Hugo pages now live as sections of the single page.
+[[redirects]]
+  from = "/blog/*"
+  to = "/#talks"
+  status = 301
+
+[[redirects]]
+  from = "/services/*"
+  to = "/#services"
+  status = 301
+
+[[redirects]]
+  from = "/linkedin/*"
+  to = "/#team"
+  status = 301

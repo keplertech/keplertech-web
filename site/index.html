@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://keplertech.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://keplertech.io/">
+<meta property="og:title" content="keplertech.io">
+<meta property="og:description" content="Open EDA tools, built for AI agents.">
+<title>keplertech.io</title>
+<meta name="description" content="Open EDA tools, built for AI agents. KeplerTech builds open-source EDA tools designed to be driven by AI agents and usable standalone by engineers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Arimo:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* base */
+:root{color-scheme:light}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* Layout: one long page, a narrow reading column inside a 1120px frame; sections alternate white and light-grey bands, the deck's dark-blue panel reserved for the common API and the team. */
+:root{
+  --navy:#0C5394; --sky:#0091EA; --ice:#ACDBF8;
+  --ink:#263238; --muted:#607D8B; --panel:#ECEFF1; --bg:#FFFFFF;
+  --line:#D5DDE2; --node:#C9D3D9; --on-navy:#FFFFFF; --navy-soft:#E3EEF8;
+  --font-mark:"Comfortaa", "Varela Round", Arial, sans-serif;
+  --font-body:"Arimo", Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --frame:1120px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --navy:#5AA9F0; --sky:#38B2F5; --ice:#ACDBF8;
+  --ink:#E4EAEE; --muted:#9DB0BB; --panel:#17242D; --bg:#0F1A21;
+  --line:#2A3B46; --node:#2C3D48; --on-navy:#FFFFFF; --navy-soft:#16324B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --navy:#5AA9F0; --sky:#38B2F5; --ice:#ACDBF8;
+  --ink:#E4EAEE; --muted:#9DB0BB; --panel:#17242D; --bg:#0F1A21;
+  --line:#2A3B46; --node:#2C3D48; --on-navy:#FFFFFF; --navy-soft:#16324B; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--navy)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--sky);outline-offset:3px;border-radius:4px}
+h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:var(--frame);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.band{padding-block:clamp(56px,8vw,96px)}
+.band.alt{background:var(--panel)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky)}
+.h2{font-size:clamp(28px,3.6vw,40px);font-weight:700;margin-top:10px}
+.lede{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:62ch;margin-top:14px}
+.sechead{margin-bottom:clamp(32px,4vw,48px)}
+.mono{font-family:var(--font-mono)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.mark{font-family:var(--font-mark);font-weight:700;font-size:22px;color:var(--navy);text-decoration:none;letter-spacing:-.01em}
+.nav{display:flex;gap:clamp(12px,2.4vw,28px);font-size:15px}
+.nav a{color:var(--ink);text-decoration:none}
+.nav a:hover{color:var(--navy)}
+@media (max-width:760px){.nav a:not(.keep){display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:clamp(64px,11vw,128px) clamp(56px,8vw,96px)}
+.hero canvas{position:absolute;top:0;right:0;width:58%;height:100%;pointer-events:none;
+  -webkit-mask-image:radial-gradient(120% 120% at 100% 0%,#000 0%,rgba(0,0,0,.55) 45%,transparent 78%);
+  mask-image:radial-gradient(120% 120% at 100% 0%,#000 0%,rgba(0,0,0,.55) 45%,transparent 78%)}
+@media (max-width:900px){.hero canvas{display:none}}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(40px,7vw,76px);font-weight:400;letter-spacing:-.02em;max-width:14ch}
+.hero .tag{font-size:clamp(19px,2.4vw,24px);font-style:italic;color:var(--navy);margin-top:22px;max-width:40ch}
+.hero .sum{color:var(--muted);max-width:58ch;margin-top:18px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:6px;font-weight:700;font-size:16px;text-decoration:none;border:1px solid var(--navy)}
+.btn.solid{background:var(--navy);color:var(--bg)}
+.btn.ghost{color:var(--navy);background:var(--bg)}
+.install{display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-family:var(--font-mono);font-size:15px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 8px 8px 14px}
+.install button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:4px;padding:4px 10px;cursor:pointer}
+
+/* context */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px}
+.ctx{background:var(--bg);border-radius:10px;padding:28px 30px}
+.ctx h3{font-size:22px;color:var(--navy);margin-bottom:14px}
+.ctx ul{margin:0;padding-left:20px;display:grid;gap:10px}
+
+/* pillars */
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px}
+.pillar{border-top:3px solid var(--sky);padding-top:20px}
+.pillar h3{font-size:22px;color:var(--navy);margin-bottom:12px}
+.pillar ul{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--ink)}
+
+/* loop: agent in the middle, the four steps around it */
+.hub{display:grid;gap:16px}
+.hub svg{display:none}
+.agentnode{background:#0C5394;color:#FFFFFF;border-radius:10px;padding:22px;text-align:center}
+.agentnode .k{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ACDBF8}
+.agentnode h3{font-size:22px;margin:6px 0 4px}
+.agentnode p{font-size:14px;color:#DCEAF6}
+.loop{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:520px){.loop{grid-template-columns:1fr}}
+.step{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:20px;min-width:0}
+.step .k{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky)}
+.step h3{font-size:21px;margin:8px 0 8px}
+.step h3 a{color:inherit}
+.step p{font-size:15px;color:var(--muted)}
+@media (min-width:1000px){
+  .hub{display:block;position:relative;width:920px;height:560px;margin-inline:auto}
+  .hub svg{display:block;position:absolute;inset:0;width:920px;height:560px}
+  .hub .ring{fill:none;stroke:var(--sky);stroke-width:2}
+  .hub .head{fill:var(--sky)}
+  .hub .spoke{stroke:var(--navy);stroke-width:2;stroke-dasharray:2 6;stroke-linecap:round}
+  .agentnode{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:196px;height:196px;border-radius:50%;padding:20px;display:grid;place-content:center}
+  .loop{display:block}
+  .step{position:absolute;width:250px;transform:translate(-50%,-50%)}
+  .step.s1{left:460px;top:74px}
+  .step.s2{left:780px;top:280px}
+  .step.s3{left:460px;top:486px}
+  .step.s4{left:140px;top:280px}
+  .hub + .loopnote{margin-top:40px}
+}
+.loopnote{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:22px}
+.loopnote strong{color:var(--navy)}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;font-weight:700}
+.flow span.p{padding:4px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--bg)}
+.flow span.p.on{background:var(--navy);border-color:var(--navy);color:var(--bg)}
+.flow i{color:var(--muted);font-style:normal}
+.flowtxt{font-size:15px;color:var(--muted);max-width:52ch}
+
+/* tools */
+.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media (max-width:1000px){.tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.tools{grid-template-columns:1fr}}
+.tool{background:var(--panel);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.tool.own{background:transparent;border:1.5px dashed var(--sky)}
+.tool h3{font-size:21px}
+.tool h3 a{color:var(--navy)}
+.tool .d{font-size:15px}
+.fact{margin-top:auto;background:var(--navy-soft);border-radius:6px;padding:12px 14px;font-size:14px}
+.fact b{color:var(--navy)}
+.bench{display:grid;gap:8px;font-variant-numeric:tabular-nums}
+.bar{display:grid;grid-template-columns:76px 1fr auto;align-items:center;gap:8px;font-size:13px}
+.bar .t{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--navy)}
+.bar.g .t i{background:var(--muted)}
+.api{margin-top:20px;background:#0C5394;color:#FFFFFF;border-radius:10px;padding:26px 30px;display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;justify-content:space-between}
+.api h3{font-size:22px}
+.api h3 a{color:#FFFFFF}
+.api p{color:#DCEAF6;font-size:15px;max-width:58ch;margin-top:6px}
+.api .stat{color:#ACDBF8;font-weight:700;font-size:18px;max-width:22ch}
+
+/* demos */
+.demohead{margin-top:clamp(40px,5vw,56px)}
+.demohead h3{font-size:clamp(22px,2.6vw,28px);margin-top:8px}
+.demohead p{color:var(--muted);max-width:65ch;margin-top:10px}
+.demos{display:flex;flex-direction:column;gap:24px;margin-top:24px;align-items:stretch}
+.demo{margin:0;display:grid;gap:10px;min-width:0;align-content:start}
+/* side by side, each column as wide as its recording's aspect ratio, so both are the same height */
+@media (min-width:860px){.demos{flex-direction:row;align-items:flex-start}.demo{flex:var(--ar) 1 0}}
+.demo .frame{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.demo img{display:block;width:100%;height:auto;max-width:100%}
+.demo figcaption{font-size:15px;color:var(--muted)}
+.demo figcaption b{color:var(--ink)}
+
+/* kepler-formal focus (dark-blue band, same in both themes) */
+.kf{background:#0C5394;color:#FFFFFF}
+.kf .eyebrow{color:#ACDBF8}
+.kf .lede{color:#DCEAF6}
+.kf a{color:#FFFFFF}
+.kf .flows{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,225px),1fr));gap:16px}
+.kf .fl{background:#FFFFFF;color:#263238;border-radius:10px;padding:20px 22px}
+.kf .fl b{display:block;color:#0C5394;font-size:19px;margin-bottom:6px}
+.kf .fl span{font-size:15px}
+.kf .mid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px;margin-top:28px;align-items:start}
+.kf h3{font-size:20px;margin-bottom:10px}
+.kf pre{margin:0;background:#083A68;border-radius:10px;padding:18px 20px;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.6;color:#E8F1F9}
+.kf .cap{font-size:14px;color:#DCEAF6;margin-top:8px}
+.kf .codes{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.kf .codes li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:baseline;font-size:15px;color:#DCEAF6}
+.kf .codes code{font-family:var(--font-mono);background:#083A68;border-radius:4px;text-align:center;padding:1px 0;color:#ACDBF8}
+.kf .codes b{color:#FFFFFF}
+.kf .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px;margin-top:36px;padding-top:28px;border-top:1px solid #3F78AE}
+.kf .cols p{font-size:15px;color:#DCEAF6}
+.kf .cols p + p{margin-top:8px}
+.kf .more{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.kf .btn{border-color:#FFFFFF}
+.kf .btn.solid{background:#FFFFFF;color:#0C5394}
+.kf .btn.ghost{background:transparent;color:#FFFFFF}
+
+/* ecosystem */
+.eco{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.ecogrid{display:grid;grid-template-columns:1fr 1fr 1.3fr 1fr 1.2fr;gap:14px;min-width:860px;align-items:start}
+.col h4{margin:0 0 10px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.col ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.chip{display:block;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:9px 12px;font-size:14px;line-height:1.35}
+.chip a{font-weight:700;color:var(--navy)}
+.chip small{display:block;color:var(--muted);font-size:13px}
+.chip.third{border-style:dashed}
+.chip.fe{background:var(--navy-soft);border-color:transparent}
+.core{background:#0C5394;color:#FFFFFF;border-radius:10px;padding:18px}
+.core a{color:#FFFFFF;font-size:28px;font-weight:700}
+.core p{color:#ACDBF8;font-weight:700;font-size:14px;margin:4px 0 10px}
+.core ul{margin:0;padding-left:18px;font-size:14px;display:grid;gap:4px;color:#E8F1F9}
+.ecokey{font-size:13px;color:var(--muted);margin-top:14px}
+
+/* talks */
+.talks{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:18px}
+.talk{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:border-color .15s,transform .15s}
+.talk:hover{border-color:var(--sky);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.talk{transition:none}.talk:hover{transform:none}}
+.thumb{aspect-ratio:16/9;max-width:100%;background:var(--navy-soft);display:grid;place-items:center;position:relative}
+.thumb .play{width:48px;height:48px;border-radius:50%;background:var(--navy);display:grid;place-items:center}
+.thumb .play::after{content:"";border-left:14px solid var(--bg);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.thumb .yr{position:absolute;left:12px;bottom:10px;font-family:var(--font-mono);font-size:12px;color:var(--navy)}
+.thumb .src{position:absolute;right:12px;bottom:10px;font-size:12px;color:var(--muted)}
+.talk .body{padding:14px 16px 16px}
+.talk h3{font-size:17px}
+.talk p{font-size:14px;color:var(--muted);margin-top:4px}
+
+/* services + team */
+.svc{background:var(--bg);border-radius:10px;padding:24px 26px}
+.svc h3{font-size:21px;color:var(--navy);margin-bottom:8px}
+.closing{font-size:clamp(22px,2.8vw,30px);font-weight:700;margin-top:36px}
+.team{margin-top:40px;background:#0C5394;border-radius:12px;padding:clamp(22px,3vw,32px)}
+.team .eyebrow{color:#ACDBF8}
+.team h3{color:#FFFFFF;font-size:clamp(22px,2.6vw,28px);margin:6px 0 20px}
+.team .three{gap:14px}
+.mate{background:#FFFFFF;border-radius:8px;padding:24px 26px;color:#263238}
+.mate b{display:block;color:#0C5394;font-size:20px;margin-bottom:8px}
+.mate span{font-size:17px}
+
+/* footer */
+.foot{border-top:1px solid var(--line);padding-block:40px}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between;align-items:flex-start}
+.foot .mark{font-size:20px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:15px}
+.foot .c{font-size:15px;color:var(--muted)}
+.mail{font-family:var(--font-mono);font-size:15px;user-select:all;color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">keplertech.io</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#loop">Agent loop</a>
+      <a href="#tools">Tools</a>
+      <a href="#talks" class="keep">Talks</a>
+      <a href="#services">Services</a>
+      <a href="#contact" class="keep">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <h1>Open EDA tools, built for AI agents</h1>
+    <p class="tag">We don't build the brain. We build the tools any brain connects to.</p>
+    <p class="sum">KeplerTech builds open-source EDA tools designed to be driven by AI agents, and usable standalone by engineers. The tools contain no AI: the agent brings the reasoning, the tools bring exact, reproducible results.</p>
+    <div class="ctas">
+      <a class="btn solid" href="#loop">See the agent loop</a>
+      <a class="btn ghost" href="https://github.com/keplertech">GitHub</a>
+    </div>
+    <div class="install"><span>pip install najaeda</span><button type="button" id="copy">Copy</button></div>
+  </div>
+</section>
+
+<section class="band alt" id="context">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">Why now</div>
+      <h2 class="h2">Agentic AI brings new power and new responsibilities to EDA tools</h2>
+    </div>
+    <div class="two">
+      <div class="ctx">
+        <h3>New power</h3>
+        <ul>
+          <li>Navigate designs far larger than any context window</li>
+          <li>Propose and apply design edits autonomously</li>
+          <li>Iterate much faster than a manual loop</li>
+        </ul>
+      </div>
+      <div class="ctx">
+        <h3>New responsibilities</h3>
+        <ul>
+          <li>Every agent edit must be proven correct</li>
+          <li>Tools must return exact, structured, bounded answers</li>
+          <li>Results must stay reviewable by an engineer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="what">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">What KeplerTech builds</div>
+      <h2 class="h2">A new kind of open EDA tools, designed to be driven by AI agents</h2>
+    </div>
+    <div class="three">
+      <div class="pillar">
+        <h3>Open source</h3>
+        <ul>
+          <li>Public on GitHub and PyPI</li>
+          <li>Transparent code: nothing hidden</li>
+          <li>Auditable by your own team</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <h3>Agent-ready</h3>
+        <ul>
+          <li>High performance: the agent loop never stalls</li>
+          <li>Multi-threaded; multi-machine extension possible</li>
+          <li>Built on our EDA veteran culture</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <h3>No AI inside</h3>
+        <ul>
+          <li>We don't build the brain: we build the tools any brain connects to</li>
+          <li>Fully deterministic: same question, same answer, every time</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="loop">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">The agent loop</div>
+      <h2 class="h2">Explore, edit, verify, show</h2>
+      <p class="lede">Our tools give any agent a precise view, a strict checker and a way to show its work.</p>
+    </div>
+    <div class="hub">
+      <svg viewBox="0 0 920 560" aria-hidden="true">
+        <ellipse class="ring" cx="460" cy="280" rx="320" ry="206"></ellipse>
+        <path class="head" d="M-9,-7 L7,0 L-9,7 Z" transform="translate(686.3,134.3) rotate(32.8)"></path>
+        <path class="head" d="M-9,-7 L7,0 L-9,7 Z" transform="translate(686.3,425.7) rotate(147.2)"></path>
+        <path class="head" d="M-9,-7 L7,0 L-9,7 Z" transform="translate(233.7,425.7) rotate(212.8)"></path>
+        <path class="head" d="M-9,-7 L7,0 L-9,7 Z" transform="translate(233.7,134.3) rotate(-32.8)"></path>
+        <line class="spoke" x1="460" y1="182" x2="460" y2="74"></line>
+        <line class="spoke" x1="558" y1="280" x2="780" y2="280"></line>
+        <line class="spoke" x1="460" y1="378" x2="460" y2="486"></line>
+        <line class="spoke" x1="362" y1="280" x2="140" y2="280"></line>
+      </svg>
+      <div class="agentnode">
+        <div class="k">Your agent</div>
+        <h3>Any AI agent</h3>
+        <p>Any model, any MCP client. It decides; the tools answer.</p>
+      </div>
+      <ol class="loop">
+        <li class="step s1">
+          <div class="k">1 · Explore</div>
+          <h3><a href="https://github.com/najaeda/naja-scope">naja-scope</a></h3>
+          <p>Exact, token-bounded answers on RTL and netlists.</p>
+        </li>
+        <li class="step s2">
+          <div class="k">2 · Edit</div>
+          <h3><a href="https://pypi.org/project/najaeda/">najaeda</a></h3>
+          <p>The agent applies its RTL or netlist edits through the Python API.</p>
+        </li>
+        <li class="step s3">
+          <div class="k">3 · Verify</div>
+          <h3><a href="https://github.com/keplertech/kepler-formal">kepler-formal</a></h3>
+          <p>The policeman: proves each RTL or netlist edit keeps the same behavior.</p>
+        </li>
+        <li class="step s4">
+          <div class="k">4 · Show</div>
+          <h3><a href="https://github.com/najaeda/naja-schematic">naja-schematic</a></h3>
+          <p>Renders the design and formal diagnoses.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="loopnote">
+      <strong>↻ Loop until equivalence is proven</strong>
+      <div class="flow" aria-label="Where it fits in the flow">
+        <span class="p on">RTL</span><i>→</i><span class="p">Synthesis</span><i>→</i><span class="p on">Netlist</span><i>→</i><span class="p">P&amp;R</span>
+      </div>
+      <p class="flowtxt">The agent edits RTL or netlists (refactor, optimize, fix); each change is proven before it is kept.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="tools">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">Lego pieces on one common API</div>
+      <h2 class="h2">Each tool works on its own, for engineers as well as for agents</h2>
+    </div>
+    <div class="tools">
+      <article class="tool">
+        <div class="eyebrow">Explore</div>
+        <h3><a href="https://github.com/najaeda/naja-scope">naja-scope</a></h3>
+        <p class="d">MCP server: drivers, loads, logic cones and source lines, for any MCP client.</p>
+        <div class="fact bench">
+          <b>17 design questions on CVA6 (RISC-V core)</b>
+          <div class="bar"><span>naja-scope</span><span class="t"><i style="width:100%"></i></span><span>17/17</span></div>
+          <div class="bar g"><span>grep</span><span class="t"><i style="width:58.8%"></i></span><span>10/17</span></div>
+          <span>Input tokens: 182k vs 888k, about 5x fewer</span>
+        </div>
+      </article>
+      <article class="tool">
+        <div class="eyebrow">Verify</div>
+        <h3><a href="https://github.com/keplertech/kepler-formal">kepler-formal</a></h3>
+        <p class="d">Formal proof that two design versions behave identically.</p>
+        <p class="d"><b>RTL SEC</b> checks the sequential behavior of SystemVerilog before vs after a change. Also gate-level LEC and SEC.</p>
+        <div class="fact"><b>Used by OpenROAD</b> for flow regression, and in hardware CI/CD flows.</div>
+      </article>
+      <article class="tool">
+        <div class="eyebrow">Show</div>
+        <h3><a href="https://github.com/najaeda/naja-schematic">naja-schematic</a></h3>
+        <p class="d">Schematic viewer for netlists and formal diagnoses. Makes results reviewable by humans.</p>
+        <div class="fact"><b>Opens in the browser</b> and in VS Code.</div>
+      </article>
+      <article class="tool own">
+        <div class="eyebrow">Build</div>
+        <h3>Your own tool</h3>
+        <p class="d">Scripts on the same API: analyze and transform your designs, automate your flow.</p>
+        <div class="fact mono">pip install najaeda</div>
+      </article>
+    </div>
+    <div class="api">
+      <div>
+        <h3>The common API: <a href="https://github.com/najaeda/naja">naja</a> + <a href="https://pypi.org/project/najaeda/">najaeda</a></h3>
+        <p>naja is our open-source C++ netlist engine; najaeda is its Python package. Every tool above is built on them.</p>
+      </div>
+      <div class="stat">najaeda: downloaded tens of times every day, worldwide</div>
+    </div>
+    <div class="demohead">
+      <div class="eyebrow">Demos</div>
+      <h3>The tools at work</h3>
+      <p>Two short recordings from real sessions: an AI agent exploring a design with naja-scope, and a schematic traced step by step in naja-schematic. Click a recording to open it full size.</p>
+    </div>
+    <div class="demos">
+      <figure class="demo" style="--ar:1.2531">
+        <a href="media/naja-scope-demo.gif" class="frame"><img src="media/naja-scope-demo.gif" width="921" height="735" loading="lazy" alt="naja-scope demo: a Claude Code session tracing drivers and a fan-in cone on a UART design, using only naja-scope tools"></a>
+        <figcaption><b>naja-scope</b> in a Claude Code session: tracing drivers and a fan-in cone on a UART design, using only naja-scope tools.</figcaption>
+      </figure>
+      <figure class="demo" style="--ar:1.9602">
+        <a href="media/naja-schematic-demo.gif" class="frame"><img src="media/naja-schematic-demo.gif" width="1280" height="653" loading="lazy" alt="naja-schematic demo: tracing an output port back to its drivers, then extending the schematic pin by pin"></a>
+        <figcaption><b>naja-schematic</b>: tracing an output port back to its drivers, then extending the schematic pin by pin.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band kf" id="kepler-formal">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">Focus: formal verification</div>
+      <h2 class="h2">kepler-formal: proof that an edit keeps the same behavior</h2>
+      <p class="lede">kepler-formal is an equivalence checking tool for digital designs. It takes two versions of a design, before and after a change, and returns a proof or a counterexample.</p>
+    </div>
+    <div class="flows">
+      <div class="fl"><b>RTL SEC</b><span>Sequential equivalence checking between two RTL versions: Verilog or SystemVerilog, including file lists with explicit tops. Checks that the sequential behavior is the same before and after a change.</span></div>
+      <div class="fl"><b>RTL to gate SEC</b><span>SystemVerilog RTL against a Verilog gate-level netlist, with Liberty libraries.</span></div>
+      <div class="fl"><b>Gate-level SEC</b><span>Sequential gate-level netlists, with Liberty libraries.</span></div>
+      <div class="fl"><b>Gate-level LEC</b><span>Combinational logic equivalence checking on post-synthesis or implementation netlists, with Liberty libraries.</span></div>
+    </div>
+    <div class="mid">
+      <div>
+        <h3>One command</h3>
+        <pre>kepler-formal -sv -v sec \
+  --sv_design1_flist before.f --sv_design1_top top \
+  --sv_design2_flist after.f  --sv_design2_top top</pre>
+        <p class="cap">RTL SEC on two SystemVerilog file lists. The same run can be described in a YAML file.</p>
+      </div>
+      <div>
+        <h3>One verdict</h3>
+        <ul class="codes">
+          <li><code>0</code><span><b>Proved.</b> All checked outputs were proved equivalent.</span></li>
+          <li><code>1</code><span><b>Partially proved.</b> Some outputs were proved; the others are inconclusive.</span></li>
+          <li><code>2</code><span><b>Inconclusive.</b> Neither a proof nor a counterexample.</span></li>
+          <li><code>3</code><span><b>Counterexample found.</b> A definitive mismatch.</span></li>
+        </ul>
+        <p class="cap">SEC exit codes: a script or an agent reads the result without parsing a log.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>For agents</h3>
+        <p><a href="https://github.com/keplertech/kepler-formal-mcp">kepler-formal-mcp</a> is a local MCP server with three tools: <span class="mono">gate_lec</span>, <span class="mono">gate_sec</span> and <span class="mono">rtl_sec</span>. Each call runs one check and returns a structured result.</p>
+        <p>The checker only reads design files. It never edits them.</p>
+      </div>
+      <div>
+        <h3>For engineers and CI</h3>
+        <p>Command line or YAML configuration. Liberty libraries, and custom technology primitives written in Python.</p>
+        <p>The prepared SEC problem can be exported as BTOR2.</p>
+      </div>
+      <div>
+        <h3>In use</h3>
+        <p>Used by OpenROAD for flow regression, and in hardware companies' CI/CD flows.</p>
+        <p>Apache-2.0 licensed. Supported and funded by NLnet through the NGI0 Entrust fund.</p>
+      </div>
+    </div>
+    <div class="more">
+      <a class="btn solid" href="https://github.com/keplertech/kepler-formal">kepler-formal on GitHub</a>
+      <a class="btn ghost" href="https://github.com/keplertech/kepler-formal-mcp">MCP server</a>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="ecosystem">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">Ecosystem</div>
+      <h2 class="h2">From design formats to tools</h2>
+    </div>
+    <div class="eco">
+      <div class="ecogrid">
+        <div class="col"><h4>Formats</h4><ul>
+          <li class="chip">SystemVerilog</li>
+          <li class="chip">VHDL</li>
+          <li class="chip">Gate-level Verilog</li>
+          <li class="chip">Liberty</li>
+          <li class="chip">Python libraries</li>
+          <li class="chip"><a href="https://github.com/najaeda/naja-if">naja-if</a><small>Interchange</small></li>
+        </ul></div>
+        <div class="col"><h4>Frontends</h4><ul>
+          <li class="chip third"><a href="https://github.com/MikePopoloski/slang">slang</a><small>SystemVerilog · third-party</small></li>
+          <li class="chip fe"><b>naja-vhdl</b><small>VHDL · beta</small></li>
+          <li class="chip fe"><a href="https://github.com/najaeda/naja-verilog">naja-verilog</a><small>Gate-level Verilog parser</small></li>
+        </ul></div>
+        <div class="col"><h4>Core</h4>
+          <div class="core">
+            <a href="https://github.com/najaeda/naja">naja</a>
+            <p>Open-source C++ netlist engine</p>
+            <ul>
+              <li>RTL and gate-level designs</li>
+              <li>Hierarchy and bit-level connectivity</li>
+              <li>Primitive functional models</li>
+              <li>Optimization and editing</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col"><h4>API</h4><ul>
+          <li class="chip"><a href="https://pypi.org/project/najaeda/">najaeda</a><small>Python API</small></li>
+        </ul></div>
+        <div class="col"><h4>Tools</h4><ul>
+          <li class="chip"><a href="https://github.com/keplertech/kepler-formal">kepler-formal</a><small>Formal verification</small></li>
+          <li class="chip"><a href="https://github.com/keplertech/kepler-formal-mcp">kepler-formal-mcp</a><small>MCP server</small></li>
+          <li class="chip"><a href="https://github.com/najaeda/naja-schematic">naja-schematic</a><small>Schematic viewer</small></li>
+          <li class="chip"><a href="https://github.com/najaeda/naja-scope">naja-scope</a><small>najaeda MCP server</small></li>
+        </ul></div>
+      </div>
+    </div>
+    <p class="ecokey">All open source · dashed outline: third-party component</p>
+  </div>
+</section>
+
+<section class="band" id="talks">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">Talks and videos</div>
+      <h2 class="h2">Recent presentations</h2>
+    </div>
+    <!-- To add a talk: copy one <a class="talk"> block and change the link, year, source and titles. -->
+    <div class="talks">
+      <a class="talk" href="https://www.youtube.com/watch?v=CshlDJYVKeo">
+        <div class="thumb"><span class="play"></span><span class="yr">2025</span><span class="src">YouTube</span></div>
+        <div class="body"><h3>D&amp;R IP-SoC Days Europe</h3><p>Conference talk</p></div>
+      </a>
+      <a class="talk" href="https://www.youtube.com/watch?v=50AOLCKA-W4">
+        <div class="thumb"><span class="play"></span><span class="yr">2025</span><span class="src">YouTube</span></div>
+        <div class="body"><h3>ORCONF</h3><p>Open-source digital design conference</p></div>
+      </a>
+      <a class="talk" href="https://wiki.f-si.org/index.php?title=Simplifying_and_accelerating_EDA_tools_development_with_the_NajaEDA_Python_library">
+        <div class="thumb"><span class="play"></span><span class="yr">2025</span><span class="src">FSiC</span></div>
+        <div class="body"><h3>FSiC: EDA tool development with the najaeda Python library</h3><p>Talk page with slides and video</p></div>
+      </a>
+      <a class="talk" href="https://www.youtube.com/watch?v=4l6_gtQCLOE">
+        <div class="thumb"><span class="play"></span><span class="yr">Podcast</span><span class="src">YouTube</span></div>
+        <div class="body"><h3>NLnet Foundation podcast</h3><p>Interview</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="services">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">Business model</div>
+      <h2 class="h2">Free open-source tools, paid services and specialization</h2>
+    </div>
+    <div class="three">
+      <div class="svc"><h3>Integration</h3><p>Our tools plugged into your flows and CI.</p></div>
+      <div class="svc"><h3>Specialization</h3><p>Custom tools and agent workflows on the naja APIs.</p></div>
+      <div class="svc"><h3>Support</h3><p>Maintenance, priority fixes and training.</p></div>
+    </div>
+    <p class="closing">Build your own independent, autonomous EDA with us.</p>
+    <div class="team" id="team">
+      <div class="eyebrow">The team</div>
+      <h3>Two technical co-founders, EDA veterans</h3>
+      <div class="three">
+        <div class="mate"><b>Leadership at major EDA vendors</b><span>Chief software architect and R&amp;D managers. Years spent designing commercial EDA software, leading engineering teams and shipping tools used on production designs.</span></div>
+        <div class="mate"><b>Core expertise</b><span>Industrial-grade open source: the engineering standards of commercial EDA, applied to public code. Experts at solving complex problems on large designs, from netlist engines and compilers to formal verification, with performance and multi-threading as first concerns.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <div>
+      <a class="mark" href="#top">keplertech.io</a>
+      <p class="c" style="margin-top:8px">Open EDA tools, built for AI agents.</p>
+      <p style="margin-top:14px"><span class="mail">contact@keplertech.io</span></p>
+    </div>
+    <ul>
+      <li><a href="https://github.com/keplertech">github.com/keplertech</a></li>
+      <li><a href="https://pypi.org/project/najaeda/">najaeda on PyPI</a></li>
+      <li><a href="https://www.linkedin.com/company/keplertech-io">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+// copy install command
+document.getElementById('copy').addEventListener('click', function(){
+  var b=this;
+  navigator.clipboard.writeText('pip install najaeda').then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)},function(){
+    var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);
+  });
+});
+// network motif, top-right of the hero: a regular jittered lattice (deterministic)
+(function(){
+  var c=document.getElementById('net'),x=c.getContext('2d');
+  function draw(){
+    var w=c.clientWidth,h=c.clientHeight;if(!w||!h)return;
+    var d=window.devicePixelRatio||1;
+    c.width=w*d;c.height=h*d;x.setTransform(d,0,0,d,0,0);x.clearRect(0,0,w,h);
+    var cs=getComputedStyle(document.documentElement);
+    var col=cs.getPropertyValue('--node').trim()||'#C9D3D9',bg=cs.getPropertyValue('--bg').trim()||'#FFFFFF';
+    var seed=11;function r(){seed=(seed*16807)%2147483647;return seed/2147483647}
+    var g=78,cols=Math.ceil(w/g)+2,rows=Math.ceil(h/(g*.86))+2,P=[];
+    for(var j=0;j<rows;j++){P[j]=[];for(var i=0;i<cols;i++){
+      P[j][i]=[i*g+(j%2?g/2:0)-g/2+(r()-.5)*g*.34, j*g*.86-g/3+(r()-.5)*g*.34, r()];
+    }}
+    x.strokeStyle=col;x.lineWidth=1;
+    function L(a,b){x.beginPath();x.moveTo(a[0],a[1]);x.lineTo(b[0],b[1]);x.stroke()}
+    for(j=0;j<rows;j++)for(i=0;i<cols;i++){
+      var a=P[j][i];
+      if(i+1<cols&&r()<.8)L(a,P[j][i+1]);
+      if(j+1<rows){
+        var k=j%2?i:i-1;
+        if(k>=0&&r()<.8)L(a,P[j+1][k]);
+        if(k+1<cols&&r()<.8)L(a,P[j+1][k+1]);
+      }
+    }
+    for(j=0;j<rows;j++)for(i=0;i<cols;i++){
+      var q=P[j][i],big=q[2]>.86;
+      x.beginPath();x.arc(q[0],q[1],big?6:3,0,7);
+      if(big){x.fillStyle=bg;x.fill();x.stroke()}else{x.fillStyle=col;x.fill()}
+    }
+  }
+  draw();addEventListener('resize',draw);
+  if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+})();
+</script>
+</body>
+</html>
