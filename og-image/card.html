@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- Source of site/og-image.png, the link-preview image. See og-image/README.md. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:'Comfortaa';font-weight:700;src:url(../site/fonts/comfortaa-700-latin.woff2) format('woff2')}
+@font-face{font-family:'Arimo';font-weight:400 700;src:url(../site/fonts/arimo-latin.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-weight:500;src:url(../site/fonts/ibm-plex-mono-500-latin.woff2) format('woff2')}
+html,body{margin:0}
+body{width:1200px;height:630px;overflow:hidden;position:relative;background:#FFFFFF;color:#263238;font-family:'Arimo',Arial,sans-serif}
+canvas{position:absolute;inset:0;width:1200px;height:630px}
+.fade{position:absolute;inset:0;background:linear-gradient(90deg,#FFFFFF 0%,#FFFFFF 46%,rgba(255,255,255,0) 82%)}
+.bar{position:absolute;left:0;top:0;bottom:0;width:14px;background:#0C5394}
+.content{position:absolute;left:84px;top:78px;right:84px;bottom:70px;display:flex;flex-direction:column}
+.mark{font-family:'Comfortaa',Arial,sans-serif;font-weight:700;font-size:40px;color:#0C5394;letter-spacing:-.01em}
+h1{margin:auto 0 0;font-size:74px;line-height:1.06;font-weight:700;letter-spacing:-.02em;max-width:780px;color:#263238}
+.tag{margin:26px 0 0;font-size:30px;line-height:1.35;color:#607D8B;max-width:720px}
+.foot{margin-top:44px;display:flex;gap:14px}
+.chip{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:22px;color:#0C5394;background:#E3EEF8;border-radius:8px;padding:8px 16px}
+</style>
+</head>
+<body>
+<canvas id="net"></canvas>
+<div class="fade"></div>
+<div class="bar"></div>
+<div class="content">
+  <div class="mark">keplertech.io</div>
+  <h1>Open EDA tools, built for AI agents</h1>
+  <p class="tag">We build the tools any brain connects to.</p>
+  <div class="foot"><span class="chip">najaeda</span><span class="chip">naja-scope</span><span class="chip">kepler-formal</span></div>
+</div>
+<script>
+// same lattice as the site hero (site/index.html), drawn larger
+(function(){
+  var c=document.getElementById('net'),x=c.getContext('2d'),w=1200,h=630,d=1;
+  c.width=w*d;c.height=h*d;x.setTransform(d,0,0,d,0,0);
+  var col='#C9D3D9',bg='#FFFFFF';
+  var seed=11;function r(){seed=(seed*16807)%2147483647;return seed/2147483647}
+  var g=92,cols=Math.ceil(w/g)+2,rows=Math.ceil(h/(g*.86))+2,P=[],i,j;
+  for(j=0;j<rows;j++){P[j]=[];for(i=0;i<cols;i++){
+    P[j][i]=[i*g+(j%2?g/2:0)-g/2+(r()-.5)*g*.34, j*g*.86-g/3+(r()-.5)*g*.34, r()];
+  }}
+  x.strokeStyle=col;x.lineWidth=1.5;
+  function L(a,b){x.beginPath();x.moveTo(a[0],a[1]);x.lineTo(b[0],b[1]);x.stroke()}
+  for(j=0;j<rows;j++)for(i=0;i<cols;i++){
+    var a=P[j][i];
+    if(i+1<cols&&r()<.8)L(a,P[j][i+1]);
+    if(j+1<rows){
+      var k=j%2?i:i-1;
+      if(k>=0&&r()<.8)L(a,P[j+1][k]);
+      if(k+1<cols&&r()<.8)L(a,P[j+1][k+1]);
+    }
+  }
+  for(j=0;j<rows;j++)for(i=0;i<cols;i++){
+    var q=P[j][i],big=q[2]>.86;
+    x.beginPath();x.arc(q[0],q[1],big?8:4,0,7);
+    if(big){x.fillStyle=bg;x.fill();x.strokeStyle='#0091EA';x.lineWidth=2;x.stroke();x.strokeStyle=col;x.lineWidth=1.5}
+    else{x.fillStyle=col;x.fill()}
+  }
+})();
+</script>
+</body>
+</html>
