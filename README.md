@@ -2,7 +2,7 @@
 
 Source of https://keplertech.io.
 
-The site is one static page: `site/index.html`, with its styles and script inside the file, and the demo recordings in `site/media/`. There is no build step. Netlify publishes the `site` folder as-is (see `netlify.toml`).
+The site is one static page: `site/index.html`, with its styles and script inside the file, the demo recordings in `site/media/` and the fonts in `site/fonts/` (self-hosted, so visitors make no request to Google). There is no build step. Netlify publishes the `site` folder as-is (see `netlify.toml`, which also sets the security headers; if the page ever loads something from another site, add that site to the Content-Security-Policy there).
 
 To preview locally, open `site/index.html` in a browser.
 
