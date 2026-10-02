@@ -323,7 +323,7 @@ p{margin:0}
   <div class="wrap">
     <div class="sechead">
       <div class="eyebrow">What KeplerTech builds</div>
-      <h2 class="h2">A new kind of open EDA tools, designed to be driven by AI agents</h2>
+      <h2 class="h2">A new kind of open EDA tools, designed to be driven by <span class="rot" aria-hidden="true"><span class="on">AI agents</span><span>humans</span></span><span class="sr">AI agents and humans</span></h2>
     </div>
     <div class="three">
       <div class="pillar">
@@ -653,15 +653,18 @@ document.getElementById('copy').addEventListener('click', function(){
     var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);
   });
 });
-// headline: cycle the words in .rot (static with reduced motion)
+// headings: cycle the words in each .rot, in step (static with reduced motion)
 (function(){
-  var r=document.querySelector('.rot');
-  if(!r||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
-  var w=r.children,i=0;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var rs=document.querySelectorAll('.rot'),i=0;
+  if(!rs.length)return;
   setInterval(function(){
-    var p=w[i];p.classList.remove('on');p.classList.add('out');
-    i=(i+1)%w.length;
-    var n=w[i];n.style.transition='none';n.classList.remove('out');n.offsetWidth;n.style.transition='';n.classList.add('on');
+    i++;
+    rs.forEach(function(r){
+      var w=r.children,p=w[(i-1)%w.length],n=w[i%w.length];
+      p.classList.remove('on');p.classList.add('out');
+      n.style.transition='none';n.classList.remove('out');n.offsetWidth;n.style.transition='';n.classList.add('on');
+    });
   },2800);
 })();
 // network motif, top-right of the hero: a regular jittered lattice (deterministic)
