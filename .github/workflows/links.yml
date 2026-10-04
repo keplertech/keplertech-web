@@ -1,0 +1,35 @@
+# Checks that every link in the site (external URLs and local files) is live.
+# Runs on changes to the site, weekly to catch links that break later, and on demand.
+name: Links
+
+on:
+  pull_request:
+    paths: ["site/**", ".github/workflows/links.yml"]
+  push:
+    branches: [main]
+    paths: ["site/**", ".github/workflows/links.yml"]
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # linkedin.com answers 999 to every automated request, so it is skipped.
+      # 429 (rate limited) is accepted so a busy host does not fail the run.
+      - uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          args: >-
+            --no-progress
+            --max-retries 3
+            --retry-wait-time 5
+            --accept 200,429
+            --exclude linkedin\.com
+            "site/**/*.html"
+          fail: true
