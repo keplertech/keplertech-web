@@ -91,7 +91,7 @@ draft = false
   <h2 class="segment-title">kepler-formal</h2>
   <p class="segment-body">
     Kepler-Formal is a logic equivalence checking (LEC) tool that operates on Verilog and the naja
-    interchange format (<a href="https://github.com/najaeda/naja-if" target="_blank" rel="noopener noreferrer">https://github.com/najaeda/naja-if</a>) and focuses today on combinational
+    interchange format (<a href="https://github.com/keplertech/naja-if" target="_blank" rel="noopener noreferrer">https://github.com/keplertech/naja-if</a>) and focuses today on combinational
     equivalence checking.
   </p>
   <p class="segment-links">
