@@ -7,5 +7,3 @@ The site is one static page: `site/index.html`, with its styles and script insid
 To preview locally, open `site/index.html` in a browser.
 
 To add a talk, copy one `<a class="talk">` block in the "Talks and videos" section and change the link, year, source and titles.
-
-The previous Hugo site (`content/`, `layouts/`, `themes/`, `static/`, `hugo.toml`) is no longer published and can be deleted.
