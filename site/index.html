@@ -649,6 +649,7 @@ p{margin:0}
 // copy install command
 document.getElementById('copy').addEventListener('click', function(){
   var b=this;
+  if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'copy-pip-install',title:'Copy pip install najaeda',event:true});
   navigator.clipboard.writeText('pip install najaeda').then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)},function(){
     var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);
   });
@@ -701,6 +702,18 @@ document.getElementById('copy').addEventListener('click', function(){
   draw();addEventListener('resize',draw);
   if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
 })();
+// visit statistics: count clicks on links to other sites (GitHub, PyPI, talks, ...)
+(function(){
+  function out(e){
+    var a=e.target.closest&&e.target.closest('a[href^="http"]');
+    if(!a||a.host===location.host||!window.goatcounter||!goatcounter.count)return;
+    goatcounter.count({path:a.href,title:a.textContent.trim().replace(/\s+/g,' '),event:true});
+  }
+  document.addEventListener('click',out);
+  document.addEventListener('auxclick',function(e){if(e.button===1)out(e)});
+})();
 </script>
+<!-- Visit statistics with GoatCounter (no cookies, no personal data); see README.md -->
+<script data-goatcounter="https://keplertech.goatcounter.com/count" async src="count.js"></script>
 </body>
 </html>
