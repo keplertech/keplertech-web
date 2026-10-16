@@ -4,11 +4,11 @@ Source of https://keplertech.io.
 
 The site is one static page: `site/index.html`, with its styles and script inside the file, the demo recordings in `site/media/` and the fonts in `site/fonts/` (self-hosted, so visitors make no request to Google). There is no build step. Netlify publishes the `site` folder as-is (see `netlify.toml`, which also sets the security headers; if the page ever loads something from another site, add that site to the Content-Security-Policy there).
 
-Visit statistics are at https://keplertech.goatcounter.com. GoatCounter sets no cookies and stores no personal data, so the site needs no cookie banner. It counts page views and clicks on links to other sites (shown as events). `site/count.js` is GoatCounter's script, served from this site; to update it, download https://gc.zgo.at/count.js over it. Visits from `localhost` and `file://` are not counted.
+Visit statistics are at https://keplertech.goatcounter.com. GoatCounter sets no cookies and stores no personal data, so the site needs no cookie banner. It counts page views, clicks on links to other sites and on the contact email (shown as events). `site/count.js` is GoatCounter's script, served from this site; to update it, download https://gc.zgo.at/count.js over it. Visits from `localhost` and `file://` are not counted.
 
 To preview locally, open `site/index.html` in a browser.
 
-`site/404.html` is shown by Netlify for any missing page.
+`site/404.html` is shown by Netlify for any missing page. `site/robots.txt` and `site/sitemap.xml` are for search engines; after a significant change to the page, update the `lastmod` date in the sitemap.
 
 The icons come from `site/favicon.svg`. After editing it, regenerate the others from the repository root (needs `rsvg-convert` and `ffmpeg`, both on Homebrew):
 
