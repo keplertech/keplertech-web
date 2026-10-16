@@ -8,4 +8,23 @@ Visit statistics are at https://keplertech.goatcounter.com. GoatCounter sets no 
 
 To preview locally, open `site/index.html` in a browser.
 
+`site/404.html` is shown by Netlify for any missing page.
+
+The icons come from `site/favicon.svg`. After editing it, regenerate the others from the repository root (needs `rsvg-convert` and `ffmpeg`, both on Homebrew):
+
+```
+rsvg-convert -w 32 -h 32 site/favicon.svg | ffmpeg -v error -y -i - site/favicon.ico
+sed 's/ rx="14"//' site/favicon.svg | rsvg-convert -w 180 -h 180 -o site/apple-touch-icon.png
+```
+
+The demo recordings are MP4 files that play like GIFs (muted, looping, only while on screen). To add one from a screen recording or GIF:
+
+```
+ffmpeg -i demo.gif -movflags +faststart -pix_fmt yuv420p -an \
+  -vf "fps=20,scale=trunc(iw/2)*2:trunc(ih/2)*2:flags=lanczos" \
+  -c:v libx264 -preset veryslow -crf 32 -tune stillimage site/media/demo.mp4
+```
+
+Browsers cache media files for a week (see `netlify.toml`), so give a changed recording a new file name.
+
 To add a talk, copy one `<a class="talk">` block in the "Talks and videos" section and change the link, year, source and titles.

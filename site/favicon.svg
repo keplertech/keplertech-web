@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- keplertech.io icon: a node of the hero lattice, in the site navy -->
+  <rect width="64" height="64" rx="14" fill="#0C5394"/>
+  <g stroke="#ACDBF8" stroke-width="4" stroke-linecap="round">
+    <path d="M16 18 L34 31 M48 15 L34 31 M34 31 L20 48 M34 31 L49 46"/>
+  </g>
+  <g fill="#ACDBF8">
+    <circle cx="16" cy="18" r="5"/><circle cx="48" cy="15" r="5"/>
+    <circle cx="20" cy="48" r="5"/><circle cx="49" cy="46" r="5"/>
+  </g>
+  <circle cx="34" cy="31" r="9" fill="#0C5394" stroke="#FFFFFF" stroke-width="4.5"/>
+</svg>
