@@ -23,6 +23,8 @@ jobs:
 
       # linkedin.com answers 999 to every automated request, so it is skipped.
       # 429 (rate limited) is accepted so a busy host does not fail the run.
+      # --root-dir resolves root-relative links such as /favicon.ico against
+      # site/, as Netlify does (404.html needs them, being served at any path).
       - uses: lycheeverse/lychee-action@v2.9.0
         with:
           args: >-
@@ -31,5 +33,6 @@ jobs:
             --retry-wait-time 5
             --accept 200,429
             --exclude linkedin\.com
+            --root-dir ${{ github.workspace }}/site
             "site/**/*.html"
           fail: true
