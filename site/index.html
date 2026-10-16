@@ -643,7 +643,7 @@ p{margin:0}
     <div>
       <a class="mark" href="#top">keplertech.io</a>
       <p class="c" style="margin-top:8px">Open EDA tools, built for AI agents.</p>
-      <p style="margin-top:14px"><span class="mail">contact@keplertech.io</span></p>
+      <p style="margin-top:14px"><a class="mail" href="mailto:contact@keplertech.io">contact@keplertech.io</a></p>
     </div>
     <ul>
       <li><a href="https://github.com/keplertech">github.com/keplertech</a></li>
@@ -723,10 +723,10 @@ document.getElementById('copy').addEventListener('click', function(){
   draw();addEventListener('resize',draw);
   if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
 })();
-// visit statistics: count clicks on links to other sites (GitHub, PyPI, talks, ...)
+// visit statistics: count clicks on links to other sites (GitHub, PyPI, talks, ...) and on the email address
 (function(){
   function out(e){
-    var a=e.target.closest&&e.target.closest('a[href^="http"]');
+    var a=e.target.closest&&e.target.closest('a[href^="http"],a[href^="mailto:"]');
     if(!a||a.host===location.host||!window.goatcounter||!goatcounter.count)return;
     goatcounter.count({path:a.href,title:a.textContent.trim().replace(/\s+/g,' '),event:true});
   }
