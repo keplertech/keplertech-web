@@ -14,6 +14,14 @@
 <meta property="og:image:alt" content="keplertech.io: Open EDA tools, built for AI agents">
 <meta name="twitter:card" content="summary_large_image">
 <title>keplertech.io</title>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1A21" media="(prefers-color-scheme: dark)">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"KeplerTech","url":"https://keplertech.io/","logo":"https://keplertech.io/apple-touch-icon.png","email":"contact@keplertech.io","description":"Open-source EDA tools designed to be driven by AI agents and usable standalone by engineers.","sameAs":["https://github.com/keplertech","https://www.linkedin.com/company/keplertech-io"]}
+</script>
 <meta name="description" content="Open EDA tools, built for AI agents. KeplerTech builds open-source EDA tools designed to be driven by AI agents and usable standalone by engineers.">
 <style>
 /* fonts: self-hosted in fonts/ (Latin subsets from Google Fonts) */
@@ -182,7 +190,7 @@ p{margin:0}
 /* side by side, each column as wide as its recording's aspect ratio, so both are the same height */
 @media (min-width:860px){.demos{flex-direction:row;align-items:flex-start}.demo{flex:var(--ar) 1 0}}
 .demo .frame{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
-.demo img{display:block;width:100%;height:auto;max-width:100%}
+.demo video{display:block;width:100%;height:auto;max-width:100%}
 .demo figcaption{font-size:15px;color:var(--muted)}
 .demo figcaption b{color:var(--ink)}
 
@@ -462,11 +470,11 @@ p{margin:0}
     </div>
     <div class="demos">
       <figure class="demo" style="--ar:1.2531">
-        <a href="media/naja-scope-demo.gif" class="frame"><img src="media/naja-scope-demo.gif" width="921" height="735" loading="lazy" alt="naja-scope demo: a Claude Code session tracing drivers and a fan-in cone on a UART design, using only naja-scope tools"></a>
+        <a href="media/naja-scope-demo.mp4" class="frame"><video src="media/naja-scope-demo.mp4" width="920" height="734" autoplay muted loop playsinline preload="metadata" aria-label="naja-scope demo: a Claude Code session tracing drivers and a fan-in cone on a UART design, using only naja-scope tools"></video></a>
         <figcaption><b>naja-scope</b> in a Claude Code session: tracing drivers and a fan-in cone on a UART design, using only naja-scope tools.</figcaption>
       </figure>
       <figure class="demo" style="--ar:1.9602">
-        <a href="media/naja-schematic-demo.gif" class="frame"><img src="media/naja-schematic-demo.gif" width="1280" height="653" loading="lazy" alt="naja-schematic demo: tracing an output port back to its drivers, then extending the schematic pin by pin"></a>
+        <a href="media/naja-schematic-demo.mp4" class="frame"><video src="media/naja-schematic-demo.mp4" width="1280" height="652" autoplay muted loop playsinline preload="metadata" aria-label="naja-schematic demo: tracing an output port back to its drivers, then extending the schematic pin by pin"></video></a>
         <figcaption><b>naja-schematic</b>: tracing an output port back to its drivers, then extending the schematic pin by pin.</figcaption>
       </figure>
     </div>
@@ -654,6 +662,19 @@ document.getElementById('copy').addEventListener('click', function(){
     var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);
   });
 });
+// demo recordings: play only while on screen; with reduced motion, wait for the visitor to press play
+(function(){
+  var vs=document.querySelectorAll('.demo video');
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){
+    vs.forEach(function(v){v.removeAttribute('autoplay');v.pause();v.controls=true;v.parentNode.removeAttribute('href')});
+    return;
+  }
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){var p=e.target.play();if(p&&p.catch)p.catch(function(){})}else e.target.pause()});
+  });
+  vs.forEach(function(v){io.observe(v)});
+})();
 // headings: cycle the words in each .rot, in step (static with reduced motion)
 (function(){
   if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;

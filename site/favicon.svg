@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- keplertech.io icon: a K drawn like a net, its branches ending in lattice nodes, in the site navy -->
+  <rect width="64" height="64" rx="14" fill="#0C5394"/>
+  <g stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M21 14 V50 M27 32 L44 15 M27 32 L45 49"/>
+  </g>
+  <g fill="#ACDBF8"><circle cx="44" cy="15" r="5"/><circle cx="45" cy="49" r="5"/></g>
+</svg>
