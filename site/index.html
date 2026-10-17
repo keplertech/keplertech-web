@@ -174,7 +174,10 @@ p{margin:0}
 .fact{margin-top:auto;background:var(--navy-soft);border-radius:6px;padding:12px 14px;font-size:14px}
 .fact b{color:var(--navy)}
 .fact+.fact{margin-top:10px}
-.fact.mono{white-space:nowrap;overflow-x:auto;font-size:13px}
+.cmd{display:grid;gap:6px}
+.cmd .h{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy)}
+.cmd code{font-family:var(--font-mono);font-size:13px;white-space:nowrap;overflow-x:auto}
+.cmd button,.try button{font:inherit;font-size:13px;font-weight:400;letter-spacing:0;text-transform:none;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:4px;padding:4px 10px;cursor:pointer}
 .bench{display:grid;gap:8px;font-variant-numeric:tabular-nums}
 .bar{display:grid;grid-template-columns:76px 1fr auto;align-items:center;gap:8px;font-size:13px}
 .bar .t{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
@@ -190,17 +193,21 @@ p{margin:0}
 .demohead{margin-top:clamp(40px,5vw,56px)}
 .demohead h3{font-size:clamp(22px,2.6vw,28px);margin-top:8px}
 .demohead p{color:var(--muted);max-width:65ch;margin-top:10px}
-.demos{display:flex;flex-direction:column;gap:24px;margin-top:24px;align-items:stretch}
-.demo{margin:0;display:grid;gap:10px;min-width:0;align-content:start}
-/* side by side, each column as wide as its recording's aspect ratio, so both are the same height */
-@media (min-width:860px){.demos{flex-direction:row;align-items:flex-start}.demo{flex:var(--ar) 1 0}}
+.demos{display:grid;grid-template-columns:minmax(0,1fr);gap:32px;margin-top:24px}
+.demo{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;min-width:0;align-content:start}
+/* side by side, each column as wide as its recording's aspect ratio, so both are the same height;
+   the figures share the grid's rows, so the captions and what follows start on the same lines */
+@media (min-width:860px){
+  .demos{grid-template-columns:minmax(0,1.2531fr) minmax(0,1.9602fr);grid-template-rows:auto auto auto auto;column-gap:24px;row-gap:12px}
+  .demo{grid-row:span 4;grid-template-rows:subgrid;gap:12px}
+}
 .demo .frame{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
 .demo video{display:block;width:100%;height:auto;max-width:100%}
 .demo figcaption{font-size:15px;color:var(--muted)}
 .demo figcaption b{color:var(--ink)}
-.try{display:flex;align-items:flex-start;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 8px 8px 14px;font-size:14px}
-.try pre{margin:0;flex:1;min-width:0;overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:var(--ink)}
-.try button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:4px;padding:4px 10px;cursor:pointer}
+.try{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 14px;font-size:14px}
+.try pre{margin:0;overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:var(--ink)}
+.try button{position:absolute;top:6px;right:8px;padding:2px 10px}
 .try-more{font-size:14px;color:var(--muted)}
 
 /* kepler-formal focus (dark-blue band, same in both themes) */
@@ -306,7 +313,7 @@ p{margin:0}
       <a class="btn solid" href="#loop">See the agent loop</a>
       <a class="btn ghost" href="https://github.com/keplertech"><svg class="gh" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
     </div>
-    <div class="install"><span>pip install najaeda</span><button type="button" id="copy">Copy</button></div>
+    <div class="install"><span>pip install najaeda</span><button type="button" data-copy="pip install najaeda" data-event="copy-pip-install">Copy</button></div>
   </div>
 </section>
 
@@ -445,7 +452,7 @@ p{margin:0}
           <div class="bar g"><span>grep</span><span class="t"><i style="width:58.8%"></i></span><span>10/17</span></div>
           <span>Input tokens: 182k vs 888k, about 5x fewer</span>
         </div>
-        <div class="fact mono">pip install naja-scope</div>
+        <div class="fact cmd"><div class="h"><span>Install</span><button type="button" data-copy="pip install naja-scope" data-event="copy-pip-install-naja-scope">Copy</button></div><code>pip install naja-scope</code></div>
       </article>
       <article class="tool">
         <div class="eyebrow">Verify</div>
@@ -464,7 +471,7 @@ p{margin:0}
         <div class="eyebrow">Build</div>
         <h3>Your own tool</h3>
         <p class="d">Scripts on the same API: analyze and transform your designs, automate your flow.</p>
-        <div class="fact mono">pip install najaeda</div>
+        <div class="fact cmd"><div class="h"><span>Install</span><button type="button" data-copy="pip install najaeda" data-event="copy-pip-install-najaeda-card">Copy</button></div><code>pip install najaeda</code></div>
       </article>
     </div>
     <div class="api">
@@ -484,7 +491,7 @@ p{margin:0}
         <a href="media/naja-scope-demo.mp4" class="frame"><video src="media/naja-scope-demo.mp4" width="920" height="734" autoplay muted loop playsinline preload="metadata" aria-label="naja-scope demo: a Claude Code session tracing drivers and a fan-in cone on a UART design, using only naja-scope tools"></video></a>
         <figcaption><b>naja-scope</b> in a Claude Code session: tracing drivers and a fan-in cone on a UART design, using only naja-scope tools.</figcaption>
         <div class="try"><pre>pip install naja-scope
-claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" id="copy-scope">Copy</button></div>
+claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy="pip install naja-scope&#10;claude mcp add naja-scope -- naja-scope-mcp" data-event="copy-naja-scope-install">Copy</button></div>
         <p class="try-more">Using another MCP client? See the <a href="https://github.com/keplertech/naja-scope#install">naja-scope install guide</a>.</p>
       </figure>
       <figure class="demo" style="--ar:1.9602">
@@ -668,20 +675,15 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" id="copy-
 </footer>
 
 <script>
-// copy install command
-document.getElementById('copy').addEventListener('click', function(){
-  var b=this;
-  if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'copy-pip-install',title:'Copy pip install najaeda',event:true});
-  navigator.clipboard.writeText('pip install najaeda').then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)},function(){
-    var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);
-  });
-});
-// copy naja-scope install commands
-document.getElementById('copy-scope').addEventListener('click', function(){
-  var b=this;
-  if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'copy-naja-scope-install',title:'Copy pip install naja-scope',event:true});
-  navigator.clipboard.writeText('pip install naja-scope\nclaude mcp add naja-scope -- naja-scope-mcp').then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)},function(){
-    var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);
+// copy buttons: copy the button's data-copy text; if the clipboard is unavailable, select the command instead
+document.querySelectorAll('button[data-copy]').forEach(function(b){
+  b.addEventListener('click', function(){
+    var t=b.getAttribute('data-copy');
+    if(window.goatcounter&&goatcounter.count)goatcounter.count({path:b.getAttribute('data-event'),title:'Copy '+t.split('\n')[0],event:true});
+    navigator.clipboard.writeText(t).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)},function(){
+      var c=b.closest('.install,.try,.cmd').querySelector(':scope>span,pre,code');
+      var r=document.createRange();r.selectNodeContents(c);var s=getSelection();s.removeAllRanges();s.addRange(r);
+    });
   });
 });
 // demo recordings: play only while on screen; with reduced motion, wait for the visitor to press play
