@@ -173,6 +173,8 @@ p{margin:0}
 .tool .d{font-size:15px}
 .fact{margin-top:auto;background:var(--navy-soft);border-radius:6px;padding:12px 14px;font-size:14px}
 .fact b{color:var(--navy)}
+.fact+.fact{margin-top:10px}
+.fact.mono{white-space:nowrap;overflow-x:auto;font-size:13px}
 .bench{display:grid;gap:8px;font-variant-numeric:tabular-nums}
 .bar{display:grid;grid-template-columns:76px 1fr auto;align-items:center;gap:8px;font-size:13px}
 .bar .t{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
@@ -196,6 +198,10 @@ p{margin:0}
 .demo video{display:block;width:100%;height:auto;max-width:100%}
 .demo figcaption{font-size:15px;color:var(--muted)}
 .demo figcaption b{color:var(--ink)}
+.try{display:flex;align-items:flex-start;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 8px 8px 14px;font-size:14px}
+.try pre{margin:0;flex:1;min-width:0;overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:var(--ink)}
+.try button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:4px;padding:4px 10px;cursor:pointer}
+.try-more{font-size:14px;color:var(--muted)}
 
 /* kepler-formal focus (dark-blue band, same in both themes) */
 .kf{background:#0C5394;color:#FFFFFF}
@@ -439,6 +445,7 @@ p{margin:0}
           <div class="bar g"><span>grep</span><span class="t"><i style="width:58.8%"></i></span><span>10/17</span></div>
           <span>Input tokens: 182k vs 888k, about 5x fewer</span>
         </div>
+        <div class="fact mono">pip install naja-scope</div>
       </article>
       <article class="tool">
         <div class="eyebrow">Verify</div>
@@ -476,6 +483,9 @@ p{margin:0}
       <figure class="demo" style="--ar:1.2531">
         <a href="media/naja-scope-demo.mp4" class="frame"><video src="media/naja-scope-demo.mp4" width="920" height="734" autoplay muted loop playsinline preload="metadata" aria-label="naja-scope demo: a Claude Code session tracing drivers and a fan-in cone on a UART design, using only naja-scope tools"></video></a>
         <figcaption><b>naja-scope</b> in a Claude Code session: tracing drivers and a fan-in cone on a UART design, using only naja-scope tools.</figcaption>
+        <div class="try"><pre>pip install naja-scope
+claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" id="copy-scope">Copy</button></div>
+        <p class="try-more">Using another MCP client? See the <a href="https://github.com/keplertech/naja-scope#install">naja-scope install guide</a>.</p>
       </figure>
       <figure class="demo" style="--ar:1.9602">
         <a href="media/naja-schematic-demo.mp4" class="frame"><video src="media/naja-schematic-demo.mp4" width="1280" height="652" autoplay muted loop playsinline preload="metadata" aria-label="naja-schematic demo: tracing an output port back to its drivers, then extending the schematic pin by pin"></video></a>
@@ -663,6 +673,14 @@ document.getElementById('copy').addEventListener('click', function(){
   var b=this;
   if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'copy-pip-install',title:'Copy pip install najaeda',event:true});
   navigator.clipboard.writeText('pip install najaeda').then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)},function(){
+    var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);
+  });
+});
+// copy naja-scope install commands
+document.getElementById('copy-scope').addEventListener('click', function(){
+  var b=this;
+  if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'copy-naja-scope-install',title:'Copy pip install naja-scope',event:true});
+  navigator.clipboard.writeText('pip install naja-scope\nclaude mcp add naja-scope -- naja-scope-mcp').then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)},function(){
     var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);
   });
 });
