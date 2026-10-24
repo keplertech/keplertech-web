@@ -1,0 +1,40 @@
+# Checks that no page of the site scrolls sideways at phone widths (320-414px).
+# Full-page screenshots of each width are kept as a run artifact for a visual check.
+name: Mobile
+
+on:
+  pull_request:
+    paths: ["site/**", "checks/**", ".github/workflows/mobile.yml"]
+  push:
+    branches: [main]
+    paths: ["site/**", "checks/**", ".github/workflows/mobile.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: checks
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: checks/package-lock.json
+
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run mobile
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: mobile-screenshots
+          path: checks/out/
+          retention-days: 14
