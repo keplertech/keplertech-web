@@ -271,6 +271,14 @@ a.social:hover{opacity:.7}
 .thumb .play::after{content:"";border-left:14px solid var(--bg);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
 .thumb .yr{position:absolute;left:12px;bottom:10px;font-family:var(--font-mono);font-size:12px;color:var(--navy)}
 .thumb .src{position:absolute;right:12px;bottom:10px;font-size:12px;color:var(--muted)}
+/* talk thumbnails, saved from YouTube so the page loads no outside images */
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.thumb.pic .play{z-index:1;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.thumb.pic .yr,.thumb.pic .src{bottom:8px;color:#FFFFFF;background:rgba(0,0,0,.65);padding:2px 7px;border-radius:4px}
+.thumb.pic .yr{left:8px}
+.thumb.pic .src{right:8px}
+.thumb.logo{background:#FFFFFF}
+.thumb.logo img{object-fit:contain}
 .talk .body{padding:14px 16px 16px}
 .talk h3{font-size:17px}
 .talk p{font-size:14px;color:var(--muted);margin-top:4px}
@@ -502,14 +510,14 @@ a.social:hover{opacity:.7}
     </div>
     <div class="demos">
       <figure class="demo" style="--ar:1.2531">
-        <a href="media/naja-scope-demo.mp4" class="frame"><video src="media/naja-scope-demo.mp4" width="920" height="734" autoplay muted loop playsinline preload="metadata" aria-label="naja-scope demo: a Claude Code session tracing drivers and a fan-in cone on a UART design, using only naja-scope tools"></video></a>
+        <a href="media/naja-scope-demo.mp4" class="frame"><video src="media/naja-scope-demo.mp4" poster="media/naja-scope-demo.webp" width="920" height="734" autoplay muted loop playsinline preload="metadata" aria-label="naja-scope demo: a Claude Code session tracing drivers and a fan-in cone on a UART design, using only naja-scope tools"></video></a>
         <figcaption><b>naja-scope</b> in a Claude Code session: tracing drivers and a fan-in cone on a UART design, using only naja-scope tools.</figcaption>
         <div class="try"><pre>pip install naja-scope
 claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy="pip install naja-scope&#10;claude mcp add naja-scope -- naja-scope-mcp" data-event="copy-naja-scope-install">Copy</button></div>
         <p class="try-more">Using another MCP client? See the <a href="https://github.com/keplertech/naja-scope#install">naja-scope install guide</a>.</p>
       </figure>
       <figure class="demo" style="--ar:1.9602">
-        <a href="media/naja-schematic-demo.mp4" class="frame"><video src="media/naja-schematic-demo.mp4" width="1280" height="652" autoplay muted loop playsinline preload="metadata" aria-label="naja-schematic demo: tracing an output port back to its drivers, then extending the schematic pin by pin"></video></a>
+        <a href="media/naja-schematic-demo.mp4" class="frame"><video src="media/naja-schematic-demo.mp4" poster="media/naja-schematic-demo.webp" width="1280" height="652" autoplay muted loop playsinline preload="metadata" aria-label="naja-schematic demo: tracing an output port back to its drivers, then extending the schematic pin by pin"></video></a>
         <figcaption><b>naja-schematic</b>: tracing an output port back to its drivers, then extending the schematic pin by pin.</figcaption>
       </figure>
     </div>
@@ -627,15 +635,15 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
     <!-- To add a talk: copy one <a class="talk"> block and change the link, year, source and titles. -->
     <div class="talks">
       <a class="talk" href="https://www.youtube.com/watch?v=IKejvCeYfvA">
-        <div class="thumb"><span class="play"></span><span class="yr">2026</span><span class="src">YouTube</span></div>
+        <div class="thumb pic"><img src="media/thumbs/kepler-formal.webp" width="480" height="270" alt="" loading="lazy" decoding="async"><span class="play"></span><span class="yr">2026</span><span class="src">YouTube</span></div>
         <div class="body"><h3>kepler-formal: open-source equivalence checking</h3><p>Noam Cohen, FOSSi Foundation</p></div>
       </a>
       <a class="talk" href="https://www.youtube.com/watch?v=CshlDJYVKeo">
-        <div class="thumb"><span class="play"></span><span class="yr">2025</span><span class="src">YouTube</span></div>
+        <div class="thumb pic"><img src="media/thumbs/ip-soc-days.webp" width="480" height="270" alt="" loading="lazy" decoding="async"><span class="play"></span><span class="yr">2025</span><span class="src">YouTube</span></div>
         <div class="body"><h3>D&amp;R IP-SoC Days Europe</h3><p>Conference talk</p></div>
       </a>
       <a class="talk" href="https://www.youtube.com/watch?v=50AOLCKA-W4">
-        <div class="thumb"><span class="play"></span><span class="yr">2025</span><span class="src">YouTube</span></div>
+        <div class="thumb pic"><img src="media/thumbs/orconf.webp" width="480" height="270" alt="" loading="lazy" decoding="async"><span class="play"></span><span class="yr">2025</span><span class="src">YouTube</span></div>
         <div class="body"><h3>ORCONF</h3><p>Open-source digital design conference</p></div>
       </a>
       <a class="talk" href="https://wiki.f-si.org/index.php?title=Simplifying_and_accelerating_EDA_tools_development_with_the_NajaEDA_Python_library">
@@ -643,7 +651,7 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
         <div class="body"><h3>FSiC: EDA tool development with the najaeda Python library</h3><p>Talk page with slides and video</p></div>
       </a>
       <a class="talk" href="https://www.youtube.com/watch?v=4l6_gtQCLOE">
-        <div class="thumb"><span class="play"></span><span class="yr">Podcast</span><span class="src">YouTube</span></div>
+        <div class="thumb pic logo"><img src="media/thumbs/podcast.webp" width="360" height="360" alt="" loading="lazy" decoding="async"><span class="play"></span><span class="yr">Podcast</span><span class="src">YouTube</span></div>
         <div class="body"><h3>NLnet Foundation podcast</h3><p>Interview</p></div>
       </a>
     </div>
