@@ -252,6 +252,13 @@ a.social:hover{opacity:.7}
 .core a{color:#FFFFFF;font-size:28px;font-weight:700}
 .core p{color:#ACDBF8;font-weight:700;font-size:14px;margin:4px 0 10px}
 .core ul{margin:0;padding-left:18px;font-size:14px;display:grid;gap:4px;color:#E8F1F9}
+/* formats and frontends share rows, so each format sits level with its parser */
+.pair{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;align-content:start}
+.pair h4{margin-bottom:2px}
+.pair .chip{display:flex;flex-direction:column;justify-content:center}
+.pair .chip.solo{grid-column:1}
+.pair .fe,.pair .third{position:relative}
+.pair .fe::before,.pair .third::before{content:"";position:absolute;left:-15px;top:50%;width:14px;border-top:2px solid var(--sky)}
 .ecokey{font-size:13px;color:var(--muted);margin-top:14px}
 
 /* talks */
@@ -573,19 +580,17 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
     </div>
     <div class="eco">
       <div class="ecogrid">
-        <div class="col"><h4>Formats</h4><ul>
-          <li class="chip">SystemVerilog</li>
-          <li class="chip">VHDL</li>
-          <li class="chip">Gate-level Verilog</li>
-          <li class="chip">Liberty</li>
-          <li class="chip">Python libraries</li>
-          <li class="chip"><a href="https://github.com/keplertech/naja-if">naja-if</a><small>Interchange</small></li>
-        </ul></div>
-        <div class="col"><h4>Frontends</h4><ul>
-          <li class="chip third"><a href="https://github.com/MikePopoloski/slang">slang</a><small>SystemVerilog · third-party</small></li>
-          <li class="chip fe"><b>naja-vhdl</b><small>VHDL · beta</small></li>
-          <li class="chip fe"><a href="https://github.com/keplertech/naja-verilog">naja-verilog</a><small>Gate-level Verilog parser</small></li>
-        </ul></div>
+        <div class="col pair"><h4>Formats</h4><h4>Frontends</h4>
+          <div class="chip">SystemVerilog</div>
+          <div class="chip third"><a href="https://github.com/MikePopoloski/slang">slang</a><small>SystemVerilog · third-party</small></div>
+          <div class="chip">VHDL</div>
+          <div class="chip fe"><b>naja-vhdl</b><small>VHDL · beta</small></div>
+          <div class="chip">Gate-level Verilog</div>
+          <div class="chip fe"><a href="https://github.com/keplertech/naja-verilog">naja-verilog</a><small>Gate-level Verilog parser</small></div>
+          <div class="chip solo">Liberty</div>
+          <div class="chip solo">Python libraries</div>
+          <div class="chip solo"><a href="https://github.com/keplertech/naja-if">naja-if</a><small>Interchange</small></div>
+        </div>
         <div class="col"><h4>Core</h4>
           <div class="core">
             <a href="https://github.com/keplertech/naja">naja</a>
