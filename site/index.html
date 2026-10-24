@@ -269,13 +269,18 @@ a.social:hover{opacity:.7}
 .talk p{font-size:14px;color:var(--muted);margin-top:4px}
 
 /* services + team */
-.svc{background:var(--bg);border-radius:10px;padding:24px 26px}
-.svc h3{font-size:21px;color:var(--navy);margin-bottom:8px}
-.svc ul{margin:12px 0 0;padding-left:18px;font-size:15px;color:var(--muted);display:grid;gap:4px}
-.team{margin-top:40px;background:#0C5394;border-radius:12px;padding:clamp(22px,3vw,32px)}
-.team .eyebrow{color:#ACDBF8}
-.team h3{color:#FFFFFF;font-size:clamp(22px,2.6vw,28px);margin:6px 0 12px}
-.team p{color:#FFFFFF;font-size:17px;max-width:62ch}
+.svc{background:var(--bg);border-top:3px solid var(--sky);border-radius:10px;padding:22px 26px 24px;display:flex;flex-direction:column}
+.svc .k{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky)}
+.svc h3{font-size:21px;color:var(--navy);margin:6px 0 8px}
+.svc ul{list-style:none;margin:14px 0 18px;padding:0;font-size:15px;display:grid;gap:6px}
+.svc li{position:relative;padding-left:24px}
+.svc li::before{content:"";position:absolute;left:2px;top:.3em;width:11px;height:6px;border:solid var(--sky);border-width:0 0 2px 2px;transform:rotate(-45deg)}
+.svc .flow{margin-top:auto}
+.svc .flow span.p{background:var(--panel)}
+.svcnote{margin-top:32px}
+.team{margin-top:56px;border-top:3px solid var(--sky);padding-top:20px}
+.team h3{color:var(--navy);font-size:clamp(22px,2.6vw,28px);margin:6px 0 12px}
+.team p{font-size:17px;max-width:62ch}
 
 /* footer */
 .foot{border-top:1px solid var(--line);padding-block:40px}
@@ -645,11 +650,11 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
       <h2 class="h2">The tools are free. We help you put them to work.</h2>
     </div>
     <div class="three">
-      <div class="svc"><h3>Integrate</h3><p>Our tools running in your flow, on your designs.</p><ul><li>Flow and CI setup</li><li>Format bridges</li><li>A first agent loop on a real block</li></ul></div>
-      <div class="svc"><h3>Extend</h3><p>Custom tools and agent workflows built on the naja APIs.</p><ul><li>In-house netlist checks</li><li>Custom transforms</li><li>MCP servers for your agents</li></ul></div>
-      <div class="svc"><h3>Support</h3><p>Someone to call when it matters.</p><ul><li>Priority fixes</li><li>Maintenance</li><li>Training for your team</li></ul></div>
+      <div class="svc"><div class="k">Get started</div><h3>Integrate</h3><p>Our tools running in your flow, on your designs.</p><ul><li>Flow and CI setup</li><li>Format bridges</li><li>A first agent loop on a real block</li></ul><div class="flow"><span class="p">kepler-formal</span><span class="p">naja-scope</span></div></div>
+      <div class="svc"><div class="k">Go further</div><h3>Extend</h3><p>Custom tools and agent workflows built on the naja APIs.</p><ul><li>In-house netlist checks</li><li>Custom transforms</li><li>MCP servers for your agents</li></ul><div class="flow"><span class="p">najaeda</span><span class="p">MCP</span></div></div>
+      <div class="svc"><div class="k">Stay supported</div><h3>Support</h3><p>Someone to call when it matters, from first run to tape-out.</p><ul><li>Priority fixes</li><li>Maintenance</li><li>Training for your team</li></ul><div class="flow"><span class="p">All our tools</span></div></div>
     </div>
-    <div class="ctas"><a class="btn solid" href="mailto:contact@keplertech.io?subject=Project">Discuss your project</a></div>
+    <div class="loopnote svcnote"><span>Not sure which fits? Tell us about your design.</span><a class="btn solid" href="mailto:contact@keplertech.io?subject=Project">Discuss your project</a></div>
     <div class="team" id="team">
       <div class="eyebrow">The team</div>
       <h3>Two technical co&#8209;founders, EDA veterans</h3>
