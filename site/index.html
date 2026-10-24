@@ -268,16 +268,17 @@ a.social:hover{opacity:.7}
 .talk p{font-size:14px;color:var(--muted);margin-top:4px}
 
 /* services + team */
-.svc{background:var(--bg);border-radius:10px;padding:24px 26px}
+.svc{background:var(--bg);border-radius:10px;padding:24px 26px;display:flex;flex-direction:column}
 .svc h3{font-size:21px;color:var(--navy);margin-bottom:8px}
-.closing{font-size:clamp(22px,2.8vw,30px);font-weight:700;margin-top:36px}
+.svc ul{margin:12px 0 18px;padding-left:18px;font-size:15px;color:var(--muted);display:grid;gap:4px}
+.svc .go{margin-top:auto;font-weight:700;text-decoration:none}
+.svc .go:hover{text-decoration:underline}
 .team{margin-top:40px;background:#0C5394;border-radius:12px;padding:clamp(22px,3vw,32px)}
 .team .eyebrow{color:#ACDBF8}
-.team h3{color:#FFFFFF;font-size:clamp(22px,2.6vw,28px);margin:6px 0 20px}
-.team .three{gap:14px}
-.mate{background:#FFFFFF;border-radius:8px;padding:24px 26px;color:#263238}
-.mate b{display:block;color:#0C5394;font-size:20px;margin-bottom:8px}
-.mate span{font-size:17px}
+.team h3{color:#FFFFFF;font-size:clamp(22px,2.6vw,28px);margin:6px 0 12px}
+.team p{color:#FFFFFF;font-size:17px;max-width:62ch}
+.team .ctas{margin-top:24px}
+.team .btn{background:#FFFFFF;color:#0C5394;border-color:#FFFFFF}
 
 /* footer */
 .foot{border-top:1px solid var(--line);padding-block:40px}
@@ -643,22 +644,19 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
 <section class="band alt" id="services">
   <div class="wrap">
     <div class="sechead">
-      <div class="eyebrow">Business model</div>
-      <h2 class="h2">Free open-source tools, paid services and specialization</h2>
+      <div class="eyebrow">Services</div>
+      <h2 class="h2">The tools are free. We help you put them to work.</h2>
     </div>
     <div class="three">
-      <div class="svc"><h3>Integration</h3><p>Our tools plugged into your flows and CI.</p></div>
-      <div class="svc"><h3>Specialization</h3><p>Custom tools and agent workflows on the naja APIs.</p></div>
-      <div class="svc"><h3>Support</h3><p>Maintenance, priority fixes and training.</p></div>
+      <div class="svc"><h3>Integrate</h3><p>Our tools running in your flow, on your designs.</p><ul><li>Flow and CI setup</li><li>Format bridges</li><li>A first agent loop on a real block</li></ul><a class="go" href="mailto:contact@keplertech.io?subject=Integration">Talk to us &rarr;</a></div>
+      <div class="svc"><h3>Extend</h3><p>Custom tools and agent workflows built on the naja APIs.</p><ul><li>In-house netlist checks</li><li>Custom transforms</li><li>MCP servers for your agents</li></ul><a class="go" href="mailto:contact@keplertech.io?subject=Custom%20tools">Talk to us &rarr;</a></div>
+      <div class="svc"><h3>Support</h3><p>Someone to call when it matters.</p><ul><li>Priority fixes</li><li>Maintenance</li><li>Training for your team</li></ul><a class="go" href="mailto:contact@keplertech.io?subject=Support">Talk to us &rarr;</a></div>
     </div>
-    <p class="closing">Build your own independent, autonomous EDA with us.</p>
     <div class="team" id="team">
       <div class="eyebrow">The team</div>
       <h3>Two technical co-founders, EDA veterans</h3>
-      <div class="three">
-        <div class="mate"><b>Leadership at major EDA vendors</b><span>Chief software architect and R&amp;D managers. Years spent designing commercial EDA software, leading engineering teams and shipping tools used on production designs.</span></div>
-        <div class="mate"><b>Core expertise</b><span>Industrial-grade open source: the engineering standards of commercial EDA, applied to public code. Experts at solving complex problems on large designs, from netlist engines and compilers to formal verification, with performance and multi-threading as first concerns.</span></div>
-      </div>
+      <p>Former chief software architect and R&amp;D managers at major EDA vendors, now applying commercial engineering standards to open source: large designs, performance and multi-threading first.</p>
+      <div class="ctas"><a class="btn" href="mailto:contact@keplertech.io?subject=Project">Discuss your project</a></div>
     </div>
   </div>
 </section>
