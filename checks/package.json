@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "description": "Checks run in CI on the static site. Kept out of the repository root so Netlify does not install them.",
+  "type": "module",
+  "scripts": {
+    "mobile": "node mobile.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

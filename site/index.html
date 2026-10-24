@@ -90,6 +90,7 @@ a.social:hover{opacity:.7}
 .nav a.social+a.social{margin-left:calc(-1 * clamp(12px,2.4vw,28px) + 14px)}
 .foot .socials{display:flex;gap:14px;margin-bottom:6px}
 @media (max-width:440px){.nav{gap:10px;font-size:14px}.nav a.social+a.social{margin-left:0}.nav a.social svg{width:22px;height:22px}}
+@media (max-width:360px){.top .wrap{gap:10px}.mark{font-size:19px}}
 
 /* hero */
 .hero{position:relative;overflow:hidden;padding-block:clamp(64px,11vw,128px) clamp(56px,8vw,96px)}
@@ -159,7 +160,7 @@ a.social:hover{opacity:.7}
 .loopnote{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:22px}
 .loopnote strong{color:var(--navy)}
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;font-weight:700}
-.flow span.p{padding:4px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--bg)}
+.flow span.p,.flow a.p{padding:4px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--bg)}
 .flow span.p.on{background:var(--navy);border-color:var(--navy);color:var(--bg)}
 .flow i{color:var(--muted);font-style:normal}
 .flowtxt{font-size:15px;color:var(--muted);max-width:52ch}
@@ -251,6 +252,13 @@ a.social:hover{opacity:.7}
 .core a{color:#FFFFFF;font-size:28px;font-weight:700}
 .core p{color:#ACDBF8;font-weight:700;font-size:14px;margin:4px 0 10px}
 .core ul{margin:0;padding-left:18px;font-size:14px;display:grid;gap:4px;color:#E8F1F9}
+/* formats and frontends share rows, so each format sits level with its parser */
+.pair{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;align-content:start}
+.pair h4{margin-bottom:2px}
+.pair .chip{display:flex;flex-direction:column;justify-content:center}
+.pair .chip.solo{grid-column:1}
+.pair .fe,.pair .third{position:relative}
+.pair .fe::before,.pair .third::before{content:"";position:absolute;left:-15px;top:50%;width:14px;border-top:2px solid var(--sky)}
 .ecokey{font-size:13px;color:var(--muted);margin-top:14px}
 
 /* talks */
@@ -263,21 +271,33 @@ a.social:hover{opacity:.7}
 .thumb .play::after{content:"";border-left:14px solid var(--bg);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
 .thumb .yr{position:absolute;left:12px;bottom:10px;font-family:var(--font-mono);font-size:12px;color:var(--navy)}
 .thumb .src{position:absolute;right:12px;bottom:10px;font-size:12px;color:var(--muted)}
+/* talk thumbnails, saved from YouTube so the page loads no outside images */
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.thumb.pic .play{z-index:1;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.thumb.pic .yr,.thumb.pic .src{bottom:8px;color:#FFFFFF;background:rgba(0,0,0,.65);padding:2px 7px;border-radius:4px}
+.thumb.pic .yr{left:8px}
+.thumb.pic .src{right:8px}
+.thumb.logo{background:#FFFFFF}
+.thumb.logo img{object-fit:contain}
 .talk .body{padding:14px 16px 16px}
 .talk h3{font-size:17px}
 .talk p{font-size:14px;color:var(--muted);margin-top:4px}
 
 /* services + team */
-.svc{background:var(--bg);border-radius:10px;padding:24px 26px}
-.svc h3{font-size:21px;color:var(--navy);margin-bottom:8px}
-.closing{font-size:clamp(22px,2.8vw,30px);font-weight:700;margin-top:36px}
-.team{margin-top:40px;background:#0C5394;border-radius:12px;padding:clamp(22px,3vw,32px)}
-.team .eyebrow{color:#ACDBF8}
-.team h3{color:#FFFFFF;font-size:clamp(22px,2.6vw,28px);margin:6px 0 20px}
-.team .three{gap:14px}
-.mate{background:#FFFFFF;border-radius:8px;padding:24px 26px;color:#263238}
-.mate b{display:block;color:#0C5394;font-size:20px;margin-bottom:8px}
-.mate span{font-size:17px}
+.svc{background:var(--bg);border-top:3px solid var(--sky);border-radius:10px;padding:22px 26px 24px;display:flex;flex-direction:column}
+.svc .k{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky)}
+.svc h3{font-size:21px;color:var(--navy);margin:6px 0 8px}
+.svc ul{list-style:none;margin:14px 0 18px;padding:0;font-size:15px;display:grid;gap:6px}
+.svc li{position:relative;padding-left:24px}
+.svc li::before{content:"";position:absolute;left:2px;top:.3em;width:11px;height:6px;border:solid var(--sky);border-width:0 0 2px 2px;transform:rotate(-45deg)}
+.svc .flow{margin-top:auto}
+.svc .flow .p{background:var(--panel)}
+.svc .flow a.p{color:var(--navy);text-decoration:none}
+.svc .flow a.p:hover{border-color:var(--navy)}
+.svcnote{margin-top:32px}
+.team{margin-top:56px}
+.team>h3{color:var(--navy);font-size:clamp(22px,2.6vw,28px);margin:6px 0 20px}
+.team p{font-size:17px}
 
 /* footer */
 .foot{border-top:1px solid var(--line);padding-block:40px}
@@ -490,14 +510,14 @@ a.social:hover{opacity:.7}
     </div>
     <div class="demos">
       <figure class="demo" style="--ar:1.2531">
-        <a href="media/naja-scope-demo.mp4" class="frame"><video src="media/naja-scope-demo.mp4" width="920" height="734" autoplay muted loop playsinline preload="metadata" aria-label="naja-scope demo: a Claude Code session tracing drivers and a fan-in cone on a UART design, using only naja-scope tools"></video></a>
+        <a href="media/naja-scope-demo.mp4" class="frame"><video src="media/naja-scope-demo.mp4" poster="media/naja-scope-demo.webp" width="920" height="734" autoplay muted loop playsinline preload="metadata" aria-label="naja-scope demo: a Claude Code session tracing drivers and a fan-in cone on a UART design, using only naja-scope tools"></video></a>
         <figcaption><b>naja-scope</b> in a Claude Code session: tracing drivers and a fan-in cone on a UART design, using only naja-scope tools.</figcaption>
         <div class="try"><pre>pip install naja-scope
 claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy="pip install naja-scope&#10;claude mcp add naja-scope -- naja-scope-mcp" data-event="copy-naja-scope-install">Copy</button></div>
         <p class="try-more">Using another MCP client? See the <a href="https://github.com/keplertech/naja-scope#install">naja-scope install guide</a>.</p>
       </figure>
       <figure class="demo" style="--ar:1.9602">
-        <a href="media/naja-schematic-demo.mp4" class="frame"><video src="media/naja-schematic-demo.mp4" width="1280" height="652" autoplay muted loop playsinline preload="metadata" aria-label="naja-schematic demo: tracing an output port back to its drivers, then extending the schematic pin by pin"></video></a>
+        <a href="media/naja-schematic-demo.mp4" class="frame"><video src="media/naja-schematic-demo.mp4" poster="media/naja-schematic-demo.webp" width="1280" height="652" autoplay muted loop playsinline preload="metadata" aria-label="naja-schematic demo: tracing an output port back to its drivers, then extending the schematic pin by pin"></video></a>
         <figcaption><b>naja-schematic</b>: tracing an output port back to its drivers, then extending the schematic pin by pin.</figcaption>
       </figure>
     </div>
@@ -568,19 +588,17 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
     </div>
     <div class="eco">
       <div class="ecogrid">
-        <div class="col"><h4>Formats</h4><ul>
-          <li class="chip">SystemVerilog</li>
-          <li class="chip">VHDL</li>
-          <li class="chip">Gate-level Verilog</li>
-          <li class="chip">Liberty</li>
-          <li class="chip">Python libraries</li>
-          <li class="chip"><a href="https://github.com/keplertech/naja-if">naja-if</a><small>Interchange</small></li>
-        </ul></div>
-        <div class="col"><h4>Frontends</h4><ul>
-          <li class="chip third"><a href="https://github.com/MikePopoloski/slang">slang</a><small>SystemVerilog · third-party</small></li>
-          <li class="chip fe"><b>naja-vhdl</b><small>VHDL · beta</small></li>
-          <li class="chip fe"><a href="https://github.com/keplertech/naja-verilog">naja-verilog</a><small>Gate-level Verilog parser</small></li>
-        </ul></div>
+        <div class="col pair"><h4>Formats</h4><h4>Frontends</h4>
+          <div class="chip">SystemVerilog</div>
+          <div class="chip third"><a href="https://github.com/MikePopoloski/slang">slang</a><small>SystemVerilog · third-party</small></div>
+          <div class="chip">VHDL</div>
+          <div class="chip fe"><b>naja-vhdl</b><small>VHDL · beta</small></div>
+          <div class="chip">Gate-level Verilog</div>
+          <div class="chip fe"><a href="https://github.com/keplertech/naja-verilog">naja-verilog</a><small>Gate-level Verilog parser</small></div>
+          <div class="chip solo">Liberty</div>
+          <div class="chip solo">Python libraries</div>
+          <div class="chip solo"><a href="https://github.com/keplertech/naja-if">naja-if</a><small>Interchange</small></div>
+        </div>
         <div class="col"><h4>Core</h4>
           <div class="core">
             <a href="https://github.com/keplertech/naja">naja</a>
@@ -617,15 +635,15 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
     <!-- To add a talk: copy one <a class="talk"> block and change the link, year, source and titles. -->
     <div class="talks">
       <a class="talk" href="https://www.youtube.com/watch?v=IKejvCeYfvA">
-        <div class="thumb"><span class="play"></span><span class="yr">2026</span><span class="src">YouTube</span></div>
+        <div class="thumb pic"><img src="media/thumbs/kepler-formal.webp" width="480" height="270" alt="" loading="lazy" decoding="async"><span class="play"></span><span class="yr">2026</span><span class="src">YouTube</span></div>
         <div class="body"><h3>kepler-formal: open-source equivalence checking</h3><p>Noam Cohen, FOSSi Foundation</p></div>
       </a>
       <a class="talk" href="https://www.youtube.com/watch?v=CshlDJYVKeo">
-        <div class="thumb"><span class="play"></span><span class="yr">2025</span><span class="src">YouTube</span></div>
+        <div class="thumb pic"><img src="media/thumbs/ip-soc-days.webp" width="480" height="270" alt="" loading="lazy" decoding="async"><span class="play"></span><span class="yr">2025</span><span class="src">YouTube</span></div>
         <div class="body"><h3>D&amp;R IP-SoC Days Europe</h3><p>Conference talk</p></div>
       </a>
       <a class="talk" href="https://www.youtube.com/watch?v=50AOLCKA-W4">
-        <div class="thumb"><span class="play"></span><span class="yr">2025</span><span class="src">YouTube</span></div>
+        <div class="thumb pic"><img src="media/thumbs/orconf.webp" width="480" height="270" alt="" loading="lazy" decoding="async"><span class="play"></span><span class="yr">2025</span><span class="src">YouTube</span></div>
         <div class="body"><h3>ORCONF</h3><p>Open-source digital design conference</p></div>
       </a>
       <a class="talk" href="https://wiki.f-si.org/index.php?title=Simplifying_and_accelerating_EDA_tools_development_with_the_NajaEDA_Python_library">
@@ -633,7 +651,7 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
         <div class="body"><h3>FSiC: EDA tool development with the najaeda Python library</h3><p>Talk page with slides and video</p></div>
       </a>
       <a class="talk" href="https://www.youtube.com/watch?v=4l6_gtQCLOE">
-        <div class="thumb"><span class="play"></span><span class="yr">Podcast</span><span class="src">YouTube</span></div>
+        <div class="thumb pic logo"><img src="media/thumbs/podcast.webp" width="360" height="360" alt="" loading="lazy" decoding="async"><span class="play"></span><span class="yr">Podcast</span><span class="src">YouTube</span></div>
         <div class="body"><h3>NLnet Foundation podcast</h3><p>Interview</p></div>
       </a>
     </div>
@@ -643,21 +661,21 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
 <section class="band alt" id="services">
   <div class="wrap">
     <div class="sechead">
-      <div class="eyebrow">Business model</div>
-      <h2 class="h2">Free open-source tools, paid services and specialization</h2>
+      <div class="eyebrow">Services</div>
+      <h2 class="h2">The tools are free. We help you put them to work.</h2>
     </div>
     <div class="three">
-      <div class="svc"><h3>Integration</h3><p>Our tools plugged into your flows and CI.</p></div>
-      <div class="svc"><h3>Specialization</h3><p>Custom tools and agent workflows on the naja APIs.</p></div>
-      <div class="svc"><h3>Support</h3><p>Maintenance, priority fixes and training.</p></div>
+      <div class="svc"><div class="k">Get started</div><h3>Integrate</h3><p>Our tools running in your flow, on your designs.</p><ul><li>Flow and CI setup</li><li>Format bridges</li><li>A first agent loop on a real block</li></ul><div class="flow"><a class="p" href="https://github.com/keplertech/kepler-formal">kepler-formal</a><a class="p" href="https://github.com/keplertech/naja-scope">naja-scope</a></div></div>
+      <div class="svc"><div class="k">Go further</div><h3>Extend</h3><p>Custom tools and agent workflows built on the naja APIs.</p><ul><li>In-house netlist checks</li><li>Custom transforms</li><li>MCP servers for your agents</li></ul><div class="flow"><a class="p" href="https://pypi.org/project/najaeda/">najaeda</a><span class="p">MCP</span></div></div>
+      <div class="svc"><div class="k">Stay supported</div><h3>Support</h3><p>Someone to call when it matters, from first run to tape-out.</p><ul><li>Priority fixes</li><li>Maintenance</li><li>Training for your team</li></ul><div class="flow"><a class="p" href="#tools">All our tools</a></div></div>
     </div>
-    <p class="closing">Build your own independent, autonomous EDA with us.</p>
+    <div class="loopnote svcnote"><span>Not sure which fits? Tell us about your design.</span><a class="btn solid" href="mailto:contact@keplertech.io?subject=Project">Discuss your project</a></div>
     <div class="team" id="team">
       <div class="eyebrow">The team</div>
-      <h3>Two technical co-founders, EDA veterans</h3>
+      <h3>Two technical co&#8209;founders, EDA veterans</h3>
       <div class="three">
-        <div class="mate"><b>Leadership at major EDA vendors</b><span>Chief software architect and R&amp;D managers. Years spent designing commercial EDA software, leading engineering teams and shipping tools used on production designs.</span></div>
-        <div class="mate"><b>Core expertise</b><span>Industrial-grade open source: the engineering standards of commercial EDA, applied to public code. Experts at solving complex problems on large designs, from netlist engines and compilers to formal verification, with performance and multi-threading as first concerns.</span></div>
+        <div class="pillar"><h3>Background</h3><p>Chief software architect and R&amp;D managers at major EDA vendors.</p></div>
+        <div class="pillar"><h3>Focus</h3><p>Commercial engineering standards in open source: large designs, performance and multi&#8209;threading first.</p></div>
       </div>
     </div>
   </div>
