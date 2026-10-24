@@ -280,9 +280,9 @@ a.social:hover{opacity:.7}
 .svc .flow a.p{color:var(--navy);text-decoration:none}
 .svc .flow a.p:hover{border-color:var(--navy)}
 .svcnote{margin-top:32px}
-.team{margin-top:56px;border-top:3px solid var(--sky);padding-top:20px}
-.team h3{color:var(--navy);font-size:clamp(22px,2.6vw,28px);margin:6px 0 12px}
-.team p{font-size:17px;max-width:62ch}
+.team{margin-top:56px}
+.team>h3{color:var(--navy);font-size:clamp(22px,2.6vw,28px);margin:6px 0 20px}
+.team p{font-size:17px}
 
 /* footer */
 .foot{border-top:1px solid var(--line);padding-block:40px}
@@ -660,7 +660,10 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
     <div class="team" id="team">
       <div class="eyebrow">The team</div>
       <h3>Two technical co&#8209;founders, EDA veterans</h3>
-      <p>Former chief software architect and R&amp;D managers at major EDA vendors, now applying commercial engineering standards to open source: large designs, performance and multi&#8209;threading first.</p>
+      <div class="three">
+        <div class="pillar"><h3>Background</h3><p>Chief software architect and R&amp;D managers at major EDA vendors.</p></div>
+        <div class="pillar"><h3>Focus</h3><p>Commercial engineering standards in open source: large designs, performance and multi&#8209;threading first.</p></div>
+      </div>
     </div>
   </div>
 </section>
