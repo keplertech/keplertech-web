@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="keplertech.io: Open EDA tools, built for AI agents">
 <meta name="twitter:card" content="summary_large_image">
-<title>keplertech.io</title>
+<title>KeplerTech: open EDA tools for chip design, built for AI agents</title>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -22,7 +22,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"KeplerTech","url":"https://keplertech.io/","logo":"https://keplertech.io/apple-touch-icon.png","email":"contact@keplertech.io","description":"Open-source EDA tools designed to be driven by AI agents and usable standalone by engineers.","sameAs":["https://github.com/keplertech","https://www.linkedin.com/company/keplertech-io"]}
 </script>
-<meta name="description" content="Open EDA tools, built for AI agents. KeplerTech builds open-source EDA tools designed to be driven by AI agents and usable standalone by engineers.">
+<meta name="description" content="Open EDA (chip design) tools, built for AI agents. KeplerTech builds open-source EDA tools designed to be driven by AI agents and usable standalone by engineers.">
 <style>
 /* fonts: self-hosted in fonts/ (Latin subsets from Google Fonts) */
 @font-face {font-family:'Arimo';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/arimo-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
@@ -99,7 +99,8 @@ a.social:hover{opacity:.7}
   mask-image:radial-gradient(120% 120% at 100% 0%,#000 0%,rgba(0,0,0,.55) 45%,transparent 78%)}
 @media (max-width:900px){.hero canvas{display:none}}
 .hero .wrap{position:relative}
-.hero h1{font-size:clamp(40px,7vw,76px);font-weight:400;letter-spacing:-.02em;max-width:14ch}
+.hero .eyebrow{margin-bottom:18px;max-width:none}
+.hero h1{font-size:clamp(40px,7vw,76px);font-weight:400;letter-spacing:-.02em}
 /* rotating end of the headline: the words share one grid cell, so the line never reflows */
 .rot{display:inline-grid;color:var(--navy)}
 .rot>span{grid-area:1/1;opacity:0;transform:translateY(.35em);transition:opacity .45s ease,transform .45s ease}
@@ -328,9 +329,10 @@ a.social:hover{opacity:.7}
 <section class="hero">
   <canvas id="net" aria-hidden="true"></canvas>
   <div class="wrap">
-    <h1>Open EDA tools, built for <span class="rot" aria-hidden="true"><span class="on">AI agents</span><span>engineers</span></span><span class="sr">AI agents and engineers</span></h1>
+    <p class="eyebrow">EDA: Electronic Design Automation, the software used to design chips</p>
+    <h1>Open EDA tools,<br> built for <span class="rot" aria-hidden="true"><span class="on">AI agents</span><span>engineers</span><span>CI pipelines</span></span><span class="sr">AI agents, engineers and CI pipelines</span></h1>
     <p class="tag">We don't build the brain. We build the tools any brain connects to.</p>
-    <p class="sum">KeplerTech builds open-source EDA tools designed to be driven by AI agents, and usable standalone by engineers. The tools contain no AI: the agent brings the reasoning, the tools bring exact, reproducible results.</p>
+    <p class="sum">KeplerTech builds open-source EDA tools designed to be driven by AI agents, usable standalone by engineers, and run unattended in CI/CD flows. The tools contain no AI: the agent brings the reasoning, the tools bring exact, reproducible results.</p>
     <div class="ctas">
       <a class="btn solid" href="#loop">See the agent loop</a>
       <a class="btn ghost" href="https://github.com/keplertech"><svg class="gh" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
@@ -370,7 +372,7 @@ a.social:hover{opacity:.7}
   <div class="wrap">
     <div class="sechead">
       <div class="eyebrow">What KeplerTech builds</div>
-      <h2 class="h2">A new kind of open EDA tools, designed to be driven by <span class="rot" aria-hidden="true"><span class="on">AI agents</span><span>engineers</span></span><span class="sr">AI agents and engineers</span></h2>
+      <h2 class="h2">A new kind of open EDA tools, designed to be driven by <span class="rot" aria-hidden="true"><span class="on">AI agents</span><span>engineers</span><span>CI pipelines</span></span><span class="sr">AI agents, engineers and CI pipelines</span></h2>
     </div>
     <div class="three">
       <div class="pillar">
@@ -674,7 +676,7 @@ claude mcp add naja-scope -- naja-scope-mcp</pre><button type="button" data-copy
       <div class="eyebrow">The team</div>
       <h3>Two technical co&#8209;founders, EDA veterans</h3>
       <div class="three">
-        <div class="pillar"><h3>Background</h3><p>Chief software architect and R&amp;D managers at major EDA vendors.</p></div>
+        <div class="pillar"><h3>Background</h3><p>Led software architecture and R&amp;D teams at major EDA vendors and at an acquired startup.</p></div>
         <div class="pillar"><h3>Focus</h3><p>Commercial engineering standards in open source: large designs, performance and multi&#8209;threading first.</p></div>
       </div>
     </div>
